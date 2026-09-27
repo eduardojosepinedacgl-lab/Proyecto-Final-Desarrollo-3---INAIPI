@@ -1,5 +1,7 @@
+using log4net.Config;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -13,11 +15,15 @@ namespace INAIPI.Core.Services
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Inicialización de Log4Net desde Log4net.config
+            string rutaConfigLog = Path.Combine(Server.MapPath("~"), "Log4net.config");
+            FileInfo archivoInfo = new FileInfo(rutaConfigLog);
+            if (archivoInfo.Exists)
+            {
+                XmlConfigurator.ConfigureAndWatch(archivoInfo);
+            }
         }
     }
 }

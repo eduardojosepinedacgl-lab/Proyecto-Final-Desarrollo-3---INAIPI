@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{03F7FE51-6F68-44C2-9696-875F1182B1BA}|INAIPI.Core.AdminApp\\INAIPI.Core.AdminApp.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.adminapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{03F7FE51-6F68-44C2-9696-875F1182B1BA}|INAIPI.Core.AdminApp\\INAIPI.Core.AdminApp.csproj|solutionrelative:inaipi.core.adminapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ADAB51B4-55B6-45B8-A0B0-9AA52D4D7EDA}|NewFolder1{ADAB51B4-55B6-45B8-A0B0-9AA52D4D7EDA}|C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\01_Tablas_Core.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
       "RelativeMoniker": "D:0:0:{ADAB51B4-55B6-45B8-A0B0-9AA52D4D7EDA}|NewFolder1{ADAB51B4-55B6-45B8-A0B0-9AA52D4D7EDA}|solutionrelative:01_Tablas_Core.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     },
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -37,8 +41,28 @@
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.AdminApp\\Form1.cs",
+              "RelativeDocumentMoniker": "INAIPI.Core.AdminApp\\Form1.cs",
+              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.AdminApp\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "INAIPI.Core.AdminApp\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-27T20:56:21.532Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "01_Tablas_Core.sql ",
               "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\01_Tablas_Core.sql",
               "RelativeDocumentMoniker": "01_Tablas_Core.sql",
