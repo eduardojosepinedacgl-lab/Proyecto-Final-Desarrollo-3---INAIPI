@@ -3,46 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\controllers\\atencionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\controllers\\atencionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\controllers\\beneficiarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\controllers\\beneficiarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\controllers\\seguridadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\controllers\\seguridadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\data\\corerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\data\\corerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\models\\entidadesdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\models\\entidadesdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\data\\accesodatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\data\\accesodatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\log4net.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\log4net.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|c:\\users\\xxcel\\documents\\github\\proyecto-final-desarrollo-3---inaipi\\core\\inaipi.core\\inaipi.core.services\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{14BFD72B-D86F-47FB-990A-938A3BC8B8D8}|INAIPI.Core.Services\\INAIPI.Core.Services.csproj|solutionrelative:inaipi.core.services\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
@@ -83,144 +43,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WebApiConfig.cs",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\App_Start\\WebApiConfig.cs",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\App_Start\\WebApiConfig.cs",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\App_Start\\WebApiConfig.cs",
-              "RelativeToolTip": "INAIPI.Core.Services\\App_Start\\WebApiConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T21:55:00.218Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Global.asax.cs",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Global.asax.cs",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\Global.asax.cs",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Global.asax.cs",
-              "RelativeToolTip": "INAIPI.Core.Services\\Global.asax.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T21:45:19.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AtencionesController.cs",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Controllers\\AtencionesController.cs",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\Controllers\\AtencionesController.cs",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Controllers\\AtencionesController.cs",
-              "RelativeToolTip": "INAIPI.Core.Services\\Controllers\\AtencionesController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAmwCYAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T21:43:44.841Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BeneficiariosController.cs",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Controllers\\BeneficiariosController.cs",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\Controllers\\BeneficiariosController.cs",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Controllers\\BeneficiariosController.cs",
-              "RelativeToolTip": "INAIPI.Core.Services\\Controllers\\BeneficiariosController.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAmwEQAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T21:41:17.277Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SeguridadController.cs",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Controllers\\SeguridadController.cs",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\Controllers\\SeguridadController.cs",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Controllers\\SeguridadController.cs",
-              "RelativeToolTip": "INAIPI.Core.Services\\Controllers\\SeguridadController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwDMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T21:39:58.174Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EntidadesDTO.cs",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Models\\EntidadesDTO.cs",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\Models\\EntidadesDTO.cs",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Models\\EntidadesDTO.cs",
-              "RelativeToolTip": "INAIPI.Core.Services\\Models\\EntidadesDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T21:37:11.694Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CoreRepository.cs",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Data\\CoreRepository.cs",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\Data\\CoreRepository.cs",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Data\\CoreRepository.cs",
-              "RelativeToolTip": "INAIPI.Core.Services\\Data\\CoreRepository.cs",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAAowBQAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T21:35:13.78Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AccesoDatos.cs",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Data\\AccesoDatos.cs",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\Data\\AccesoDatos.cs",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Data\\AccesoDatos.cs",
-              "RelativeToolTip": "INAIPI.Core.Services\\Data\\AccesoDatos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T21:34:13.402Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Log4net.config",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Log4net.config",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\Log4net.config",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Log4net.config",
-              "RelativeToolTip": "INAIPI.Core.Services\\Log4net.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-09-27T21:25:04.211Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "packages.config",
-              "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\packages.config",
-              "RelativeDocumentMoniker": "INAIPI.Core.Services\\packages.config",
-              "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\packages.config",
-              "RelativeToolTip": "INAIPI.Core.Services\\packages.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-09-27T21:22:11.01Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "Web.config",
               "DocumentMoniker": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Web.config",
               "RelativeDocumentMoniker": "INAIPI.Core.Services\\Web.config",
               "ToolTip": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Core.Services\\Web.config",
               "RelativeToolTip": "INAIPI.Core.Services\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-09-27T21:13:52.284Z",
+              "WhenOpened": "2026-09-27T22:13:09.07Z",
               "EditorCaption": ""
             }
           ]
