@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "BRZvJFWv2nI=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\xxcel\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.10\\microsoft.aspnetcore.openapi.10.0.10.nupkg.sha512",
+    "C:\\Users\\xxcel\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "El paquete \"Microsoft.OpenApi\" 2.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "projectPath": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Services.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\xxcel\\Documents\\GitHub\\Proyecto-Final-Desarrollo-3---INAIPI\\CORE\\INAIPI.CORE\\INAIPI.Services.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}

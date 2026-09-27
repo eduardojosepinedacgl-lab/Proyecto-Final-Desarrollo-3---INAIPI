@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Database/">
+    <File Path="01_Tablas_Core.sql" />
+    <File Path="02_StoredProcedures_Seguridad.sql" />
+    <File Path="03_StoredProcedures_Operaciones.sql" />
+    <File Path="04_StoredProcedures_Logs.sql" />
+    <File Path="05_StoredProcedures_Reportes.sql" />
+  </Folder>
+  <Project Path="INAIPI.Core.AdminApp/INAIPI.Core.AdminApp.csproj" />
+  <Project Path="INAIPI.Core.Services/INAIPI.Core.Services.csproj" />
+</Solution>
