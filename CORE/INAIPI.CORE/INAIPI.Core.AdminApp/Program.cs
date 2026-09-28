@@ -3,20 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using INAIPI.Core.AdminApp.Forms;
+using INAIPI.Core.AdminApp.Helpers;
 
 namespace INAIPI.Core.AdminApp
 {
     internal static class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
         [STAThread]
         static void Main()
         {
+            LoggerHelper.InicializarLogging();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            frmLogin login = new frmLogin();
+            if (login.ShowDialog() == DialogResult.OK && login.UsuarioAutenticado != null)
+            {
+                Application.Run(new frmPrincipal(login.UsuarioAutenticado));
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }
