@@ -123,3 +123,4 @@ C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI
 C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI.CORE\INAIPI.Core.AdminApp\obj\Debug\INAIPI.C.DFC7D058.Up2Date
 C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI.CORE\INAIPI.Core.AdminApp\obj\Debug\INAIPI.Core.AdminApp.exe
 C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI.CORE\INAIPI.Core.AdminApp\obj\Debug\INAIPI.Core.AdminApp.pdb
+C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI.CORE\INAIPI.Core.AdminApp\bin\Debug\Reports\rptBeneficiariosPorCentro.rdlc

@@ -1,0 +1,6 @@
+2026-09-28 11:40:28,815 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'admin'.
+2026-09-28 11:46:17,509 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'admin'.
+2026-09-28 11:46:19,301 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'admin'.
+2026-09-28 11:46:19,856 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'admin'.
+2026-09-28 11:50:16,249 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'admin' con rol 'Administrador'.
+2026-09-28 11:51:03,218 [1] INFO  INAIPI.Core.AdminApp.Forms.frmReporteViewer - Reporte RDLC generado con 0 registros.

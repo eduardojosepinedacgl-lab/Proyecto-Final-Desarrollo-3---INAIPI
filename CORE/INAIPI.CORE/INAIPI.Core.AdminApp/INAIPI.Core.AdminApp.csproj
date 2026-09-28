@@ -118,12 +118,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Reports\rptBeneficiariosPorCentro.rdlc" />
-    <None Include="Log4net.config">
+    <EmbeddedResource Include="Reports\rptBeneficiariosPorCentro.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Log4net.config">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Log4net.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

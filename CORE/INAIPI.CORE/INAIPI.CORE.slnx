@@ -5,6 +5,8 @@
     <File Path="03_StoredProcedures_Operaciones.sql" />
     <File Path="04_StoredProcedures_Logs.sql" />
     <File Path="05_StoredProcedures_Reportes.sql" />
+    <File Path="06_Usuario_Admin.sql" />
+    <File Path="07_Correccion_Algorito_Hash.sql" />
   </Folder>
   <Project Path="INAIPI.Core.AdminApp/INAIPI.Core.AdminApp.csproj" Id="03f7fe51-6f68-44c2-9696-875f1182b1ba" />
   <Project Path="INAIPI.Core.Services/INAIPI.Core.Services.csproj" Id="14bfd72b-d86f-47fb-990a-938a3bc8b8d8" />
