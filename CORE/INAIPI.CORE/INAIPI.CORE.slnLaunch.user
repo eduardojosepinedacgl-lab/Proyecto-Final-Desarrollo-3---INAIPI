@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "INAIPI.Core.Services\\INAIPI.Core.Services.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "INAIPI.Core.AdminApp\\INAIPI.Core.AdminApp.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

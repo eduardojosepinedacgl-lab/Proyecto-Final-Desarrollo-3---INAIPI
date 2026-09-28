@@ -96,3 +96,4 @@ C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI
 C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI.CORE\INAIPI.Core.Services\obj\Debug\INAIPI.C.BAB5B6DF.Up2Date
 C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI.CORE\INAIPI.Core.Services\obj\Debug\INAIPI.Core.Services.dll
 C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI.CORE\INAIPI.Core.Services\obj\Debug\INAIPI.Core.Services.pdb
+C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI.CORE\INAIPI.Core.Services\bin\Log4net.config
