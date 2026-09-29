@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/CAJA/INAIPI.CAJA/.vs/INAIPI.CAJA.slnx
+/CAJA/INAIPI.CAJA/obj/Debug
