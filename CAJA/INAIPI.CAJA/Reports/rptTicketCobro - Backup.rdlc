@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="[http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition](http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition)" xmlns:rd="[http://schemas.microsoft.com/SQLServer/reporting/reportdesigner](http://schemas.microsoft.com/SQLServer/reporting/reportdesigner)">
+	<AutoRefresh>0</AutoRefresh>
+	<DataSources>
+		<DataSource Name="dsCajaLocal">
+			<ConnectionProperties>
+				<DataProvider>System.Data.DataSet</DataProvider>
+				<ConnectString>/* Local Connection */</ConnectString>
+			</ConnectionProperties>
+			<rd:DataSourceID>5c2e2e98-1a52-4411-9a74-b8160868f760</rd:DataSourceID>
+		</DataSource>
+	</DataSources>
+	<DataSets>
+		<DataSet Name="DataSetCajaLocal">
+			<Query>
+				<DataSourceName>dsCajaLocal</DataSourceName>
+				<CommandText>/* Local Query */</CommandText>
+			</Query>
+			<Fields>
+				<Field Name="TransaccionGuid">
+					<DataField>TransaccionGuid</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="BeneficiarioId">
+					<DataField>BeneficiarioId</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="DescripcionServicio">
+					<DataField>DescripcionServicio</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="Importe">
+					<DataField>Importe</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="Fecha">
+					<DataField>Fecha</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+			</Fields>
+		</DataSet>
+	</DataSets>
+	<ReportSections>
+		<ReportSection>
+			<Body>
+				<ReportItems>
+					<Textbox Name="Title">
+						<CanGrow>true</CanGrow>
+						<KeepTogether>true</KeepTogether>
+						<Paragraphs>
+							<Paragraph>
+								<TextRuns>
+									<TextRun>
+										<Value>INAIPI - COMPROBANTE DE CAJA</Value>
+										<Style>
+											<FontFamily>Arial</FontFamily>
+											<FontSize>12pt</FontSize>
+											<FontWeight>Bold</FontWeight>
+										</Style>
+									</TextRun>
+								</TextRuns>
+								<Style>
+									<TextAlign>Center</TextAlign>
+								</Style>
+							</Paragraph>
+						</Paragraphs>
+						<Top>0.1in</Top>
+						<Left>0.1in</Left>
+						<Height>0.25in</Height>
+						<Width>2.8in</Width>
+					</Textbox>
+					<Textbox Name="lblFecha">
+						<CanGrow>true</CanGrow>
+						<KeepTogether>true</KeepTogether>
+						<Paragraphs>
+							<Paragraph>
+								<TextRuns>
+									<TextRun>
+										<Value>="Fecha: " &amp; First(Fields!Fecha.Value, "DataSetCajaLocal")</Value>
+										<Style>
+											<FontFamily>Arial</FontFamily>
+										</Style>
+									</TextRun>
+								</TextRuns>
+							</Paragraph>
+						</Paragraphs>
+						<Top>0.5in</Top>
+						<Left>0.1in</Left>
+						<Height>0.2in</Height>
+						<Width>2.8in</Width>
+					</Textbox>
+					<Textbox Name="lblBeneficiario">
+						<CanGrow>true</CanGrow>
+						<KeepTogether>true</KeepTogether>
+						<Paragraphs>
+							<Paragraph>
+								<TextRuns>
+									<TextRun>
+										<Value>="ID Beneficiario: " &amp; First(Fields!BeneficiarioId.Value, "DataSetCajaLocal")</Value>
+										<Style>
+											<FontFamily>Arial</FontFamily>
+										</Style>
+									</TextRun>
+								</TextRuns>
+							</Paragraph>
+						</Paragraphs>
+						<Top>0.7in</Top>
+						<Left>0.1in</Left>
+						<Height>0.2in</Height>
+						<Width>2.8in</Width>
+					</Textbox>
+					<Textbox Name="lblServicio">
+						<CanGrow>true</CanGrow>
+						<KeepTogether>true</KeepTogether>
+						<Paragraphs>
+							<Paragraph>
+								<TextRuns>
+									<TextRun>
+										<Value>="Servicio: " &amp; First(Fields!DescripcionServicio.Value, "DataSetCajaLocal")</Value>
+										<Style>
+											<FontFamily>Arial</FontFamily>
+										</Style>
+									</TextRun>
+								</TextRuns>
+							</Paragraph>
+						</Paragraphs>
+						<Top>0.9in</Top>
+						<Left>0.1in</Left>
+						<Height>0.2in</Height>
+						<Width>2.8in</Width>
+					</Textbox>
+					<Textbox Name="lblImporte">
+						<CanGrow>true</CanGrow>
+						<KeepTogether>true</KeepTogether>
+						<Paragraphs>
+							<Paragraph>
+								<TextRuns>
+									<TextRun>
+										<Value>="Importe: $" &amp; First(Fields!Importe.Value, "DataSetCajaLocal")</Value>
+										<Style>
+											<FontFamily>Arial</FontFamily>
+											<FontWeight>Bold</FontWeight>
+										</Style>
+									</TextRun>
+								</TextRuns>
+							</Paragraph>
+						</Paragraphs>
+						<Top>1.1in</Top>
+						<Left>0.1in</Left>
+						<Height>0.2in</Height>
+						<Width>2.8in</Width>
+					</Textbox>
+					<Textbox Name="lblGuid">
+						<CanGrow>true</CanGrow>
+						<KeepTogether>true</KeepTogether>
+						<Paragraphs>
+							<Paragraph>
+								<TextRuns>
+									<TextRun>
+										<Value>="Ref: " &amp; First(Fields!TransaccionGuid.Value, "DataSetCajaLocal")</Value>
+										<Style>
+											<FontFamily>Arial</FontFamily>
+											<FontSize>8pt</FontSize>
+											<Color>DimGray</Color>
+										</Style>
+									</TextRun>
+								</TextRuns>
+							</Paragraph>
+						</Paragraphs>
+						<Top>1.4in</Top>
+						<Left>0.1in</Left>
+						<Height>0.2in</Height>
+						<Width>2.8in</Width>
+					</Textbox>
+				</ReportItems>
+				<Height>1.8in</Height>
+			</Body>
+			<Width>3in</Width>
+			<Page>
+				<PageHeight>4in</PageHeight>
+				<PageWidth>3.2in</PageWidth>
+				<LeftMargin>0.1in</LeftMargin>
+				<RightMargin>0.1in</RightMargin>
+				<TopMargin>0.1in</TopMargin>
+				<BottomMargin>0.1in</BottomMargin>
+			</Page>
+		</ReportSection>
+	</ReportSections>
+</Report>

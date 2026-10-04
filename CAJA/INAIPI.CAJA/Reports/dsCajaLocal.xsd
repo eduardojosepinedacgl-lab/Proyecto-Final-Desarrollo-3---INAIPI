@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCajaLocal" targetNamespace="http://tempuri.org/dsCajaLocal.xsd" xmlns:mstns="http://tempuri.org/dsCajaLocal.xsd" xmlns="http://tempuri.org/dsCajaLocal.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCajaLocal" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="dsCajaLocal" msprop:Generator_DataSetName="dsCajaLocal">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtTicket" msprop:Generator_RowEvHandlerName="dtTicketRowChangeEventHandler" msprop:Generator_RowDeletedName="dtTicketRowDeleted" msprop:Generator_RowDeletingName="dtTicketRowDeleting" msprop:Generator_RowEvArgName="dtTicketRowChangeEvent" msprop:Generator_TablePropName="dtTicket" msprop:Generator_RowChangedName="dtTicketRowChanged" msprop:Generator_RowChangingName="dtTicketRowChanging" msprop:Generator_TableClassName="dtTicketDataTable" msprop:Generator_RowClassName="dtTicketRow" msprop:Generator_TableVarName="tabledtTicket" msprop:Generator_UserTableName="dtTicket">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TransaccionGuid" msprop:Generator_ColumnPropNameInRow="TransaccionGuid" msprop:Generator_ColumnPropNameInTable="TransaccionGuidColumn" msprop:Generator_ColumnVarNameInTable="columnTransaccionGuid" msprop:Generator_UserColumnName="TransaccionGuid" type="xs:string" minOccurs="0" />
+              <xs:element name="BeneficiarioId" msprop:Generator_ColumnPropNameInRow="BeneficiarioId" msprop:Generator_ColumnPropNameInTable="BeneficiarioIdColumn" msprop:Generator_ColumnVarNameInTable="columnBeneficiarioId" msprop:Generator_UserColumnName="BeneficiarioId" type="xs:string" minOccurs="0" />
+              <xs:element name="DescripcionServicio" msprop:Generator_ColumnPropNameInRow="DescripcionServicio" msprop:Generator_ColumnPropNameInTable="DescripcionServicioColumn" msprop:Generator_ColumnVarNameInTable="columnDescripcionServicio" msprop:Generator_UserColumnName="DescripcionServicio" type="xs:string" minOccurs="0" />
+              <xs:element name="Importe" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_UserColumnName="Importe" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
