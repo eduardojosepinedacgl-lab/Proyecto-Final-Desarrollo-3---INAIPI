@@ -1,1 +1,99 @@
+================================================================================
+                    SISTEMA DE GESTIÓN INSTITUCIONAL INAIPI
+                DOCUMENTACIÓN TÉCNICA DE MÓDULO: NÚCLEO (CORE)
+================================================================================
+Identificador de Módulo : INAIPI.CORE
+Solución Visual Studio   : INAIPI.CORE.sln
+Plataforma Base          : Microsoft .NET Framework 4.8 / C#
+Motor de Base de Datos   : Microsoft SQL Server (Transact-SQL / LocalDB)
+Componentes del Módulo   : INAIPI.Core.AdminApp (Cliente Escritorio Windows Forms)
+                           INAIPI.Core.Services (Servicio REST ASP.NET Web API)
+                           INAIPI_Core (Base de Datos Relacional Central)
+================================================================================
 
+1. DESCRIPCIÓN GENERAL Y PROPÓSITO ARQUITECTÓNICO
+--------------------------------------------------------------------------------
+El módulo CORE constituye el núcleo transaccional, operativo y de seguridad del 
+ecosistema informático del Instituto Nacional de Atención Integral a la Primera 
+Infancia (INAIPI). Opera como la "Fuente Única de Verdad" (Single Source of 
+Truth) para el padrón maestro de infantes beneficiarios, tutores legales, centros 
+asistenciales (CAIPI y CAFI), control de accesos por roles (RBAC) y auditoría.
+
+El módulo implementa una arquitectura desacoplada en dos subsistemas principales:
+- Una aplicación cliente rica (AdminApp) para la administración institucional,
+  registro transaccional con concurrencia optimista y emisión de reportería local.
+- Una capa de servicios web (Services) para proveer interoperabilidad segura vía
+  HTTP/JSON hacia módulos especializados (Salud, Educación, Trabajo Social) y 
+  sistemas externos de gobierno (SIUBEN, MINERD, SNS, JCE).
+
+
+2. ESTRUCTURA Y COMPONENTES DE LA SOLUCIÓN
+--------------------------------------------------------------------------------
+A. INAIPI.Core.AdminApp (C# Windows Forms)
+   - Forms/frmLogin.cs: Control de acceso institucional con validación de política
+     de contraseñas NIST 800-63 (mínimo 12 caracteres) y hash SHA-256.
+   - Forms/frmPrincipal.cs: Contenedor MDI con control de menús dinámicos según
+     privilegios del usuario autenticado.
+   - Forms/frmBeneficiariosCRUD.cs: Mantenimiento transaccional atómico de 
+     beneficiarios y tutores con detección de colisiones por Concurrencia Optimista 
+     (columna VersionRegistro).
+   - Forms/frmReporteViewer.cs: Visor de informes locales RDLC alimentado en tiempo
+     de ejecución por DataTable dinámico desacoplado.
+   - Forms/frmUsuariosRoles.cs: Módulo de gestión de cuentas y asignación de sedes.
+   - Reports/rptBeneficiariosPorCentro.rdlc: Definición XML del informe tabular.
+   - Reports/dsINAIPICore.xsd: Esquema XML para tipado en tiempo de diseño.
+   - Helpers/LoggerHelper.cs: Envoltorio estático para instanciación de Log4Net.
+
+B. INAIPI.Core.Services (ASP.NET Web API RESTful)
+   - Controllers/BeneficiariosController.cs: Endpoints para consulta del padrón
+     y búsqueda parametrizada por centro asistencial.
+   - Controllers/AtencionesController.cs: Recepción y asentamiento de atenciones
+     intermodulares.
+   - Controllers/SeguridadController.cs: Autenticación de consumidores de servicios.
+   - Models/EntidadesDTO.cs: Colección unificada de contratos de datos 
+     (BeneficiarioDTO, SolicitudAtencionDTO, UsuarioAutenticadoDTO, etc.) y la 
+     envoltura estándar de respuesta desacoplada (RespuestaServicio<T>).
+   - Data/AccesoDatos.cs & CoreRepository.cs: Capa de persistencia con ADO.NET
+     puro, comandos parametrizados y manejo estricto de conexiones cerradas.
+   - App_Start/WebApiConfig.cs: Configuración del pipeline HTTP, forzando la salida
+     exclusiva de JSON formateado e indentado (supresión de XmlFormatter).
+
+C. Base de Datos Central (INAIPI_Core)
+   - Tablas Maestras: tblCentros, tblRoles, tblPermisos, tblUsuarios.
+   - Tablas Transaccionales: tblTutores, tblBeneficiarios, tblAtenciones.
+   - Tabla de Auditoría: Log4NetLog.
+   - Procedimientos Almacenados: ppValidarUsuario, ppGetBeneficiariosPorCentro,
+     ppInsertarBeneficiario, ppActualizarBeneficiario, 
+     ppInsertarAtencionTransaccional y ppInsertLog.
+
+
+3. DIRECTIVAS DE SEGURIDAD Y AUDITORÍA
+--------------------------------------------------------------------------------
+- Criptografía de Credenciales: Algoritmo de dispersión SHA-256 aplicado sobre
+  cadenas bajo codificación UTF-8 en cliente y normalizado con HASHBYTES de tipo 
+  VARCHAR (binario directo) en SQL Server. Las contraseñas en texto plano jamás 
+  son persistidas ni transmitidas sin cifrar.
+- Control de Concurrencia Optimista: La entidad Beneficiario implementa un 
+  contador de versión numérico entero. Toda modificación valida que la versión 
+  en memoria coincida con la base de datos al momento del UPDATE; de haber 
+  discrepancia, la transacción aborta para evitar pérdidas de datos concurrentes.
+- Sistema de Auditoría Dual (Log4Net):
+  1. Destino Físico (RollingFileAppender): Archivos rotativos diarios en disco
+     (Logs/) limitados a 10MB por archivo para diagnóstico perimetral.
+  2. Destino Relacional (AdoNetAppender): Inserción transaccional directa en la
+     tabla Log4NetLog mediante el procedimiento dbo.ppInsertLog.
+
+
+4. PARÁMETROS DE CONFIGURACIÓN Y DESPLIEGUE
+--------------------------------------------------------------------------------
+- Cadena de Conexión Primaria (CnCoreDb):
+  Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=INAIPI_Core;Integrated Security=True;Encrypt=False;
+  (Debe coincidir exactamente en App.config y Web.config).
+- Configuración de Inicio:
+  La solución está diseñada para ejecutarse en modo "Varios proyectos de inicio", 
+  inicializando primero INAIPI.Core.Services (sin depurar / depuración web) y 
+  seguidamente INAIPI.Core.AdminApp.
+- Salida de Archivos Críticos:
+  Los archivos Log4net.config (ambos proyectos) y rptBeneficiariosPorCentro.rdlc 
+  deben mantener la propiedad "Copiar en el directorio de salida" como "Copiar siempre".
+================================================================================
