@@ -1,6 +1,7 @@
 using INAIPI.Integracion.Models;
 using INAIPI.Integracion.Services;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace INAIPI.Integracion.Controllers
@@ -17,9 +18,11 @@ namespace INAIPI.Integracion.Controllers
 
         [HttpPost]
         [Route("sincronizar")]
-        public IHttpActionResult Sincronizar(LoteSincronizacionDTO lote)
+        public async Task<IHttpActionResult> Sincronizar(
+            LoteSincronizacionDTO lote)
         {
-            RespuestaSND respuesta = sincronizacionService.ValidarLote(lote);
+            RespuestaSND respuesta =
+                await sincronizacionService.SincronizarLoteAsync(lote);
 
             return Content((HttpStatusCode)respuesta.Codigo, respuesta);
         }

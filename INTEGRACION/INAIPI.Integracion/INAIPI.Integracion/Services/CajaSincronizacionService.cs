@@ -2,12 +2,14 @@ using INAIPI.Integracion.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace INAIPI.Integracion.Services
 {
     public class CajaSincronizacionService
     {
-        public RespuestaSND ValidarLote(LoteSincronizacionDTO lote)
+        public async Task<RespuestaSND> SincronizarLoteAsync(
+            LoteSincronizacionDTO lote)
         {
             if (lote == null ||
                 lote.Transacciones == null ||
@@ -51,13 +53,63 @@ namespace INAIPI.Integracion.Services
                     "El lote contiene TransaccionGuid repetidos.");
             }
 
+            ResilienciaService resilienciaService = new ResilienciaService();
+
+            List<object> resultados = new List<object>();
+            bool todasPersistidas = true;
+
+            foreach (TransaccionCajaDTO transaccion in lote.Transacciones)
+            {
+                SolicitudAtencionCoreDTO solicitudCore =
+                    new SolicitudAtencionCoreDTO
+                    {
+                        TransaccionGuid = transaccion.TransaccionGuid,
+                        BeneficiarioId = transaccion.BeneficiarioId,
+                        CentroId = transaccion.CentroId,
+                        Monto = transaccion.Monto,
+                        DescripcionServicio = transaccion.Descripcion,
+                        FechaRegistro = transaccion.FechaRegistro
+                    };
+
+                RespuestaSND respuestaCore =
+                    await resilienciaService.EnviarConReintentosAsync(
+                        solicitudCore);
+
+                bool persistida = respuestaCore.Codigo == 200;
+
+                if (!persistida)
+                {
+                    todasPersistidas = false;
+                }
+
+                resultados.Add(new
+                {
+                    TransaccionGuid = transaccion.TransaccionGuid,
+                    Estado = persistida
+                        ? "PersistidoEnCore"
+                        : "Pendiente",
+                    CodigoCore = respuestaCore.Codigo,
+                    Mensaje = persistida
+                        ? "Transacción persistida correctamente en CORE."
+                        : respuestaCore.Mensaje
+                });
+            }
+
+            if (!todasPersistidas)
+            {
+                return RespuestaSND.Error(
+                    503,
+                    "CORE no está disponible; una o más transacciones siguen pendientes.");
+            }
+
             return RespuestaSND.Exito(
-                "Lote recibido y validado correctamente por el SND.",
+                "Lote sincronizado correctamente con CORE.",
                 new
                 {
                     TotalRecibido = lote.Transacciones.Count,
-                    Estado = "RecibidoPorSND",
-                    TerminalId = lote.TerminalId
+                    Estado = "PersistidoEnCore",
+                    TerminalId = lote.TerminalId,
+                    Resultados = resultados
                 });
         }
     }
