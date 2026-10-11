@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http;
+using INAIPI.Integracion.Filters;
 
 namespace INAIPI.Integracion
 {
@@ -10,13 +11,13 @@ namespace INAIPI.Integracion
         {
             config.MapHttpAttributeRoutes();
 
-            config.Formatters.JsonFormatter.SerializerSettings =
-                new JsonSerializerSettings
-                {
-                    ContractResolver =
-                        new CamelCasePropertyNamesContractResolver(),
-                    NullValueHandling = NullValueHandling.Ignore
-                };
+            config.Filters.Add(new GlobalExceptionFilter());
+
+            config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                NullValueHandling = NullValueHandling.Ignore
+            };
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
         }

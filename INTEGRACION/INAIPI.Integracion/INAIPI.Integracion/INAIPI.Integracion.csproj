@@ -57,9 +57,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GatewayCajaController.cs" />
     <Compile Include="Controllers\TelemetriaController.cs" />
+    <Compile Include="Filters\BOLAAuthorizationAttribute.cs" />
+    <Compile Include="Filters\GlobalExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SNDLogger.cs" />
     <Compile Include="Models\LoteSincronizacionDTO.cs" />
     <Compile Include="Models\RespuestaSND.cs" />
     <Compile Include="Models\SolicitudAtencionCoreDTO.cs" />
