@@ -71,6 +71,7 @@
     <Compile Include="Services\CajaSincronizacionService.cs" />
     <Compile Include="Services\CoreTransaccionalClient.cs" />
     <Compile Include="Services\ResilienciaService.cs" />
+    <Compile Include="Swagger\SwaggerConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
