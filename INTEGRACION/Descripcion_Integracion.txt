@@ -1,1 +1,64 @@
+Módulo de Integración SND 
 
+1. Preparación del Entorno (Setup)
+
+    Restauración de Paquetes: Al abrir el proyecto recién clonado, hacer clic derecho en la solución dentro de Visual Studio y seleccionar "Restore NuGet Packages" para descargar Swashbuckle, WebActivatorEx, Newtonsoft.Json y log4net.
+
+    Ejecución del CORE: Abrir la solución INAIPI.CORE, establecer INAIPI.Core.Services como proyecto de inicio y ejecutarlo con F5. El servicio debe iniciarse en el puerto configurado para IIS Express. Nota: Puede aparecer HTTP Error 403.14 - Forbidden al abrir la raíz del CORE. Es normal porque es una Web API sin página de inicio. No detener la ejecución mientras se realizan las pruebas.
+
+    Configuración del CORE: Abrir el archivo Web.config de Integración y verificar que la clave CoreBaseUrl tenga la misma URL del proyecto INAIPI.Core.Services.
+
+2. Validación de Telemetría y Swagger
+
+    Inicio del SND: Ejecutar INAIPI.Integracion.
+    Ping: Abrir en el navegador la ruta /api/telemetria/ping utilizando el puerto asignado a Integración.
+    Resultado Esperado: Debe responder HTTP 200 con el mensaje SND disponible.
+    Swagger: Abrir la ruta /swagger utilizando el puerto asignado a Integración.
+    Catálogo de Endpoints: Deben aparecer los grupos GatewayCaja y Telemetria, incluyendo las rutas GET /api/telemetria/ping y POST /api/caja/sincronizar.
+
+3. Validación de Sincronización con CORE
+
+    Preparación de Datos: La base INAIPI_Core debe tener un centro y un beneficiario existentes. Si no existen beneficiarios, abrir INAIPI.Core.AdminApp, iniciar sesión y crear un beneficiario de prueba. Envío de Transacción: En Swagger abrir GatewayCaja, seleccionar POST /api/caja/sincronizar y presionar Try it out.
+
+    Swagger muestra el siguiente JSON como formato de referencia. Antes de ejecutar la prueba exitosa, sustituir transaccionGuid, beneficiarioId, centroId, monto, descripcion y fechaRegistro por valores válidos de la base de datos.
+
+    {
+  "terminalId": "string",
+  "transacciones": [
+    {
+      "transaccionGuid": "00000000-0000-0000-0000-000000000000",
+      "beneficiarioId": 0,
+      "centroId": 0,
+      "monto": 0,
+      "descripcion": "string",
+      "fechaRegistro": "2026-10-12T15:09:31.804Z",
+      "sincronizado": true
+    }
+  ]
+}
+
+    Resultado Esperado: Swagger debe devolver HTTP 200 y un mensaje similar a Lote sincronizado correctamente con CORE.
+
+4. Validación de Persistencia e Idempotencia
+
+   Abrir SQL Server Object Explorer, y confirmar con la tabla tblAtenciones
+
+    La tabla debe mostrar la transacción enviada desde Swagger.
+
+    Enviar nuevamente el mismo JSON, manteniendo el mismo valor de TransaccionGuid, asi comprobamos que no se duplica.
+
+    Resultado Esperado: La cantidad debe ser 1, confirmando que el CORE no inserta duplicados cuando recibe una transacción reenviada.
+
+5. Validación de Errores y Resiliencia
+
+    GUID Inválido: Enviar una transacción con el valor 00000000-0000-0000-0000-000000000000 en TransaccionGuid.
+
+    Resultado Esperado: El SND debe responder HTTP 400 con el mensaje Cada transacción debe contener un TransaccionGuid válido.
+
+    CORE No Disponible: Detener INAIPI.Core.Services con Shift + F5 y enviar un lote válido desde Swagger.
+
+    Resultado Esperado: El SND debe realizar reintentos controlados y responder HTTP 503 indicando que el CORE no está disponible y que la transacción permanece pendiente.
+
+    Auditoría: Revisar la carpeta de logs generada por Log4net dentro de bin\Logs.
+
+    Los logs deben registrar errores, reintentos y problemas de comunicación con el CORE.
