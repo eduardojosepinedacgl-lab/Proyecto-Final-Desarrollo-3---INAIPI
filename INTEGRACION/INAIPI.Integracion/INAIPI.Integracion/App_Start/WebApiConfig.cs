@@ -2,7 +2,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http;
 using INAIPI.Integracion.Filters;
-using INAIPI.Integracion.Swagger;
 
 namespace INAIPI.Integracion
 {
@@ -13,8 +12,6 @@ namespace INAIPI.Integracion
             config.MapHttpAttributeRoutes();
 
             config.Filters.Add(new GlobalExceptionFilter());
-
-            SwaggerConfig.Register();
 
             config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
             {

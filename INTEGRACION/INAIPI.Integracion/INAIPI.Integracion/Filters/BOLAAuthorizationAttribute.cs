@@ -13,7 +13,7 @@ namespace INAIPI.Integracion.Filters
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            var identidad = actionContext.RequestContext.Principal;
+            ClaimsPrincipal identidad = actionContext.RequestContext.Principal as ClaimsPrincipal;
 
             if (identidad == null || identidad.Identity == null || !identidad.Identity.IsAuthenticated)
             {
@@ -28,7 +28,7 @@ namespace INAIPI.Integracion.Filters
 
             string usuario = identidad.Identity.Name;
 
-            object valorCentro;
+            object valorCentro = null;
 
             bool tieneCentro = actionContext.RequestContext.RouteData != null &&
                 actionContext.RequestContext.RouteData.Values.TryGetValue("centroId", out valorCentro);
