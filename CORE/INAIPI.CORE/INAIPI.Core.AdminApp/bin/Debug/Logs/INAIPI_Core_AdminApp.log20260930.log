@@ -1,0 +1,2 @@
+2026-09-30 20:16:51,455 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'Admin'.
+2026-09-30 20:17:06,035 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'Admin' con rol 'Administrador'.

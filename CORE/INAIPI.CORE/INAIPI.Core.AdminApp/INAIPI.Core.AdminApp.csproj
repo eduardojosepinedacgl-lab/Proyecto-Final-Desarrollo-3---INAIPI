@@ -81,6 +81,12 @@
     <Compile Include="Forms\frmBeneficiariosCRUD.Designer.cs">
       <DependentUpon>frmBeneficiariosCRUD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmBitacoraAuditoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBitacoraAuditoria.Designer.cs">
+      <DependentUpon>frmBitacoraAuditoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,12 @@
     <Compile Include="Forms\frmReporteViewer.Designer.cs">
       <DependentUpon>frmReporteViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmUsuariosRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUsuariosRoles.Designer.cs">
+      <DependentUpon>frmUsuariosRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\LoggerHelper.cs" />
     <Compile Include="Log4net.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -109,6 +121,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Forms\frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
