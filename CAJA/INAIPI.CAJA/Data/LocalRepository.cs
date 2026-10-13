@@ -33,8 +33,8 @@ namespace INAIPI.CAJA.Data
                     cmd.Parameters.AddWithValue("@TransaccionGuid", transaccion.TransaccionGuid);
                     cmd.Parameters.AddWithValue("@BeneficiarioId", transaccion.BeneficiarioId);
                     cmd.Parameters.AddWithValue("@DescripcionServicio", transaccion.DescripcionServicio);
-                    cmd.Parameters.AddWithValue("@Importe", transaccion.Importe);
-                    cmd.Parameters.AddWithValue("@Fecha", transaccion.Fecha);
+                    cmd.Parameters.AddWithValue("@Importe", transaccion.Monto);
+                    cmd.Parameters.AddWithValue("@Fecha", transaccion.FechaRegistro);
                     cmd.Parameters.AddWithValue("@PayloadJson", payload);
 
                     con.Open();

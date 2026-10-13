@@ -34,3 +34,41 @@ Plan de Pruebas: Módulo de Caja (Contingencia y Sincronización)
     Forzar Excepción: Insertar un throw new Exception("Prueba de auditoría"); temporal en el botón de cobro y ejecutar un intento de guardado.
 
     Escritura en Disco: Navegar a la ruta física del proyecto bin\Debug\Logs (esta carpeta se crea localmente al compilar, por lo que tu compañero tendrá que generar su propio error para verla). Abrir el archivo CajaOffline_Log.txt y verificar que el error haya quedado registrado con fecha, hilo y detalle técnico.
+
+NUEVAS PRUEBAS DE CAJA EN BASE A LA ULTIMA ACTUALIZACIÓN
+
+1. Prueba de Seguridad y Arranque
+
+    Acción: Ejecutar el sistema sin ingresar ID ni fondo, y presionar cancelar/cerrar.
+
+    Resultado Esperado: El sistema bloquea el acceso y termina el proceso (Application.Exit), impidiendo el uso de la interfaz principal.
+
+    Acción 2: Ingresar ID válido y monto inicial.
+
+    Resultado Esperado: Acceso concedido. La barra de título muestra el ID del operador y el fondo inicial inyectados en memoria temporal.
+
+2. Prueba de Interoperabilidad (Facturación)
+
+    Acción: Entrar a "Gestión de Cobros". Intentar escribir un servicio manualmente.
+
+    Resultado Esperado: El campo está bloqueado (DropDownList) y solo permite seleccionar los 6 componentes institucionales.
+
+    Acción 2: Procesar un cobro con datos válidos.
+
+    Resultado Esperado: La transacción se persiste en la BD local, se evalúa la conexión al SND, y se despliega el comprobante (PDF/Ticket) automáticamente en pantalla.
+
+3. Prueba de Trazabilidad (Historial y Reimpresión)
+
+    Acción: Entrar a "Registro de Transacciones". Seleccionar una fila y hacer doble clic.
+
+    Resultado Esperado: El sistema extrae el TransaccionGuid, cruza los datos de la fila y renderiza una copia exacta del recibo original al instante.
+
+4. Prueba de Integridad Financiera (Cierre de Turno)
+
+    Acción: Entrar a "Auditoría y Cierre".
+
+    Resultado Esperado: El sistema suma automáticamente todos los registros de la tabla local y muestra el Total Esperado.
+
+    Acción 2: Ingresar un monto físico distinto al esperado y cerrar turno.
+
+    Resultado Esperado: El sistema permite el cierre, pero deja una huella inmutable (Warn/Error) en el archivo Logs\CajaAuditoria.log detallando el ID del cajero y el monto exacto del descuadre.

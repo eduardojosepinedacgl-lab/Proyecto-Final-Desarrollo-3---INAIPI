@@ -79,11 +79,23 @@
     <Compile Include="Forms\frmCobroServicio.Designer.cs">
       <DependentUpon>frmCobroServicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCuadreCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCuadreCaja.Designer.cs">
+      <DependentUpon>frmCuadreCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmHistorialTransacciones.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmHistorialTransacciones.Designer.cs">
       <DependentUpon>frmHistorialTransacciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInicioCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInicioCaja.Designer.cs">
+      <DependentUpon>frmInicioCaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPrincipalCaja.cs">
       <SubType>Form</SubType>
@@ -100,6 +112,7 @@
     <Compile Include="Helpers\CajaLogger.cs" />
     <Compile Include="Models\OutboxItem.cs" />
     <Compile Include="Models\TransaccionCajaDTO.cs" />
+    <Compile Include="Models\TurnoCaja.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\dsCajaLocal.cs">
@@ -113,6 +126,9 @@
     <Compile Include="Services\ConexionSNDClient.cs" />
     <Compile Include="Services\SincronizadorBackground.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Forms\frmHistorialTransacciones.resx">
+      <DependentUpon>frmHistorialTransacciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPrincipalCaja.resx">
       <DependentUpon>frmPrincipalCaja.cs</DependentUpon>
     </EmbeddedResource>
