@@ -28,7 +28,7 @@ namespace INAIPI.Integracion.Filters
 
             string usuario = identidad.Identity.Name;
 
-            object valorCentro;
+            object valorCentro = null;
 
             bool tieneCentro = actionContext.RequestContext.RouteData != null &&
                 actionContext.RequestContext.RouteData.Values.TryGetValue("centroId", out valorCentro);
