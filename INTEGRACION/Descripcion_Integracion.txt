@@ -1,64 +1,53 @@
-Módulo de Integración SND 
+MODULO DE INTEGRACION SND - PERSISTENCIA Y REENVIO
 
-1. Preparación del Entorno (Setup)
+Requisitos: Windows, Visual Studio, .NET Framework 4.7.2, SQL Server/LocalDB.
+Restaurar los paquetes NuGet antes de compilar.
 
-    Restauración de Paquetes: Al abrir el proyecto recién clonado, hacer clic derecho en la solución dentro de Visual Studio y seleccionar "Restore NuGet Packages" para descargar Swashbuckle, WebActivatorEx, Newtonsoft.Json y log4net.
+INSTALACION
+1. Ejecutar SQL/Crear_INAIPI_Integracion.sql en la instancia SQL elegida.
+   El script crea la base y tabla si no existen. No migra tablas existentes.
+2. Ajustar CnIntegracionDb en Web.config a esa instancia.
+3. Ajustar CoreBaseUrl al puerto de INAIPI.Core.Services.
+4. Recompilar y ejecutar Integracion; abrir /swagger para iniciar la aplicacion.
 
-    Ejecución del CORE: Abrir la solución INAIPI.CORE, establecer INAIPI.Core.Services como proyecto de inicio y ejecutarlo con F5. El servicio debe iniciarse en el puerto configurado para IIS Express. Nota: Puede aparecer HTTP Error 403.14 - Forbidden al abrir la raíz del CORE. Es normal porque es una Web API sin página de inicio. No detener la ejecución mientras se realizan las pruebas.
+ENDPOINTS
+GET /api/telemetria/ping verifica que Integracion responda, no la disponibilidad de CORE.
+POST /api/caja/sincronizar valida y almacena el lote.
+HTTP 202 confirma almacenamiento, no persistencia en CORE.
+HTTP 400 indica validacion fallida. HTTP 503 indica fallo de almacenamiento.
+Usar GUID nuevos para operaciones nuevas. Un GUID existente conserva los datos originales.
 
-    Configuración del CORE: Abrir el archivo Web.config de Integración y verificar que la clave CoreBaseUrl tenga la misma URL del proyecto INAIPI.Core.Services.
+PERSISTENCIA
+Data/PendientesRepository.cs guarda el lote en una transaccion SQL.
+La clave primaria evita filas duplicadas por GUID.
+Estados: Pendiente, Sincronizada, Rechazada. EnProceso esta reservado; esta version no lo utiliza.
+Intentos cuenta ciclos de envio, no cada intento HTTP.
+FechaRegistro se normaliza a UTC; enviar fechas con zona horaria explicita.
 
-2. Validación de Telemetría y Swagger
+PROCESADOR
+Global.asax inicia ProcesadorPendientes mediante QueueBackgroundWorkItem.
+Selecciona hasta 20 pendientes cuyo ProximoIntentoUtc ya llego o es NULL.
+Un bloqueo de sesion SQL evita ciclos concurrentes de este procesador en la misma base.
+Solo el procesador realiza los envios; el endpoint no envia directamente.
+ResilienciaService realiza hasta cuatro intentos con esperas de 1, 2 y 3 segundos.
+Codigo CORE 200: Sincronizada. Codigos >=500, 408 o 429: Pendiente.
+Otros codigos: Rechazada; revisar datos y logs antes de reactivar.
+Tras fallo temporal se programa ProximoIntentoUtc a 30 segundos.
+Tras cada ciclo el procesador espera 30 segundos; el intervalo real incluye el tiempo de los envios.
 
-    Inicio del SND: Ejecutar INAIPI.Integracion.
-    Ping: Abrir en el navegador la ruta /api/telemetria/ping utilizando el puerto asignado a Integración.
-    Resultado Esperado: Debe responder HTTP 200 con el mensaje SND disponible.
-    Swagger: Abrir la ruta /swagger utilizando el puerto asignado a Integración.
-    Catálogo de Endpoints: Deben aparecer los grupos GatewayCaja y Telemetria, incluyendo las rutas GET /api/telemetria/ping y POST /api/caja/sincronizar.
+PRUEBA
+1. Dejar SQL e Integracion ejecutandose y detener solamente CORE Services.
+2. Enviar desde Swagger un lote con centro/beneficiario validos y GUID nuevos.
+3. Verificar registros Pendiente en INAIPI_Integracion.dbo.TransaccionesPendientes.
+4. Iniciar CORE sin reenviar el lote.
+5. Verificar Sincronizada y FechaSincronizacionUtc, y registros en tblAtenciones.
+6. Revisar logs con el GUID. Logs registra diagnostico, no sustituye la tabla.
 
-3. Validación de Sincronización con CORE
-
-    Preparación de Datos: La base INAIPI_Core debe tener un centro y un beneficiario existentes. Si no existen beneficiarios, abrir INAIPI.Core.AdminApp, iniciar sesión y crear un beneficiario de prueba. Envío de Transacción: En Swagger abrir GatewayCaja, seleccionar POST /api/caja/sincronizar y presionar Try it out.
-
-    Swagger muestra el siguiente JSON como formato de referencia. Antes de ejecutar la prueba exitosa, sustituir transaccionGuid, beneficiarioId, centroId, monto, descripcion y fechaRegistro por valores válidos de la base de datos.
-
-    {
-  "terminalId": "string",
-  "transacciones": [
-    {
-      "transaccionGuid": "00000000-0000-0000-0000-000000000000",
-      "beneficiarioId": 0,
-      "centroId": 0,
-      "monto": 0,
-      "descripcion": "string",
-      "fechaRegistro": "2026-10-12T15:09:31.804Z",
-      "sincronizado": true
-    }
-  ]
-}
-
-    Resultado Esperado: Swagger debe devolver HTTP 200 y un mensaje similar a Lote sincronizado correctamente con CORE.
-
-4. Validación de Persistencia e Idempotencia
-
-   Abrir SQL Server Object Explorer, y confirmar con la tabla tblAtenciones
-
-    La tabla debe mostrar la transacción enviada desde Swagger.
-
-    Enviar nuevamente el mismo JSON, manteniendo el mismo valor de TransaccionGuid, asi comprobamos que no se duplica.
-
-    Resultado Esperado: La cantidad debe ser 1, confirmando que el CORE no inserta duplicados cuando recibe una transacción reenviada.
-
-5. Validación de Errores y Resiliencia
-
-    GUID Inválido: Enviar una transacción con el valor 00000000-0000-0000-0000-000000000000 en TransaccionGuid.
-
-    Resultado Esperado: El SND debe responder HTTP 400 con el mensaje Cada transacción debe contener un TransaccionGuid válido.
-
-    CORE No Disponible: Detener INAIPI.Core.Services con Shift + F5 y enviar un lote válido desde Swagger.
-
-    Resultado Esperado: El SND debe realizar reintentos controlados y responder HTTP 503 indicando que el CORE no está disponible y que la transacción permanece pendiente.
-
-    Auditoría: Revisar la carpeta de logs generada por Log4net dentro de bin\Logs.
-
-    Los logs deben registrar errores, reintentos y problemas de comunicación con el CORE.
+LIMITACIONES
+El procesador vive en ASP.NET: al detener IIS Express o reciclar la aplicacion se interrumpe.
+Los registros permanecen en SQL y se retoman cuando la aplicacion vuelve a arrancar.
+No garantiza ejecucion si el sitio esta detenido o inactivo; para produccion usar un servicio independiente.
+Si SQL tambien esta caido, no puede aceptar nuevas transacciones de forma segura.
+CORE debe garantizar idempotencia por TransaccionGuid: si pierde una confirmacion se puede reenviar.
+Esta version no compara los datos de GUID repetidos ni recupera registros EnProceso.
+No subir credenciales, logs, datos personales ni archivos mdf/ldf a GitHub.

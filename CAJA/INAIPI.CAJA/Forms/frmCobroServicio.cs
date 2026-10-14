@@ -67,18 +67,20 @@ namespace INAIPI.CAJA.Forms
                     FechaRegistro = DateTime.Now // Reemplaza a Fecha
                 };
 
+                var repo = new LocalRepository();
+                repo.GuardarTransaccionContingencia(transaccion);
+
                 var sndClient = new ConexionSNDClient();
                 bool enviadoOnline = sndClient.EnviarTransaccion(transaccion);
 
-                if (!enviadoOnline)
+                if (enviadoOnline)
                 {
-                    var repo = new LocalRepository();
-                    repo.GuardarTransaccionContingencia(transaccion);
-                    MessageBox.Show("Sin red. Transacción guardada en contingencia (Outbox).", "Modo Offline", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    repo.MarcarComoSincronizado(transaccion.TransaccionGuid);
+                    MessageBox.Show("Transacción procesada correctamente en línea.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Transacción procesada correctamente en línea.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Sin red. Transacción guardada en contingencia (Outbox).", "Modo Offline", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 frmReporteTicket frmTicket = new frmReporteTicket(

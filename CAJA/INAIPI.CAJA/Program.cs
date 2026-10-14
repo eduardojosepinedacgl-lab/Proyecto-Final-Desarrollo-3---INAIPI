@@ -18,7 +18,15 @@ namespace INAIPI.CAJA
             log4net.Config.XmlConfigurator.Configure();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPrincipalCaja());
+            frmInicioCaja frmInicioCaja = new frmInicioCaja();
+            if (frmInicioCaja.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmPrincipalCaja());
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }

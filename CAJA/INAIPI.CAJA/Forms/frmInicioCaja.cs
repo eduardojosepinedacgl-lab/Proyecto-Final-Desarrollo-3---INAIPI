@@ -23,6 +23,10 @@ namespace INAIPI.CAJA.Forms
                 TurnoCaja.CajeroId = cajeroId;
                 TurnoCaja.MontoInicial = monto;
                 TurnoCaja.TurnoAbierto = true;
+                INAIPI.CAJA.Helpers.CajaLogger.Info($"INICIO DE TURNO | Cajero ID: {TurnoCaja.CajeroId} | Fondo Inicial Declarado: {TurnoCaja.MontoInicial:C2} | Terminal: {Environment.MachineName}");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+                TurnoCaja.TurnoAbierto = true;
                 TurnoCaja.FechaApertura = DateTime.Now;
 
                 MessageBox.Show($"Turno abierto exitosamente.\nCajero ID: {cajeroId}\nFondo de Caja: {monto:C2}", "Apertura de Caja", MessageBoxButtons.OK, MessageBoxIcon.Information);

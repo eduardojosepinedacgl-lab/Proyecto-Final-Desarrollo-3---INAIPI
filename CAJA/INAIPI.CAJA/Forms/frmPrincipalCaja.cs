@@ -16,11 +16,6 @@ namespace INAIPI.CAJA.Forms
 
         private void frmPrincipalCaja_Shown(object sender, EventArgs e)
         {
-            this.Hide();
-
-            Forms.frmInicioCaja frmInicio = new Forms.frmInicioCaja();
-            frmInicio.ShowDialog();
-
             if (TurnoCaja.TurnoAbierto)
             {
                 this.Show();
@@ -74,12 +69,21 @@ namespace INAIPI.CAJA.Forms
 
         private void btnAuditoriaCierre_Click(object sender, EventArgs e)
         {
-            frmCuadreCaja frmCuadre = new frmCuadreCaja();
-            frmCuadre.ShowDialog();
+            AbrirFormularioHijo(new frmCuadreCaja());
         }
 
         private void btnSalirSistema_Click(object sender, EventArgs e)
         {
+            if (TurnoCaja.TurnoAbierto)
+            {
+                MessageBox.Show("Vamos a realizar el cuadre de caja antes de salir.", "Cierre Requerido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Aquí pones el código que simula el clic en tu pestaña "Auditoría y Cierre de Turno"
+                // para abrirle el formulario de cuadre automáticamente.
+                AbrirFormularioHijo(new frmCuadreCaja());
+                return;
+            }
+
             Application.Exit();
         }
 
@@ -93,6 +97,18 @@ namespace INAIPI.CAJA.Forms
             formHijo.MdiParent = this;
             formHijo.Dock = DockStyle.Fill;
             formHijo.Show();
+        }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (TurnoCaja.TurnoAbierto)
+                {
+                    MessageBox.Show("Debe realizar el Cierre de Turno antes de salir del sistema.", "Cierre Requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    e.Cancel = true; // Esto aborta el cierre de la ventana
+                }
+            }
         }
     }
 }
