@@ -114,6 +114,8 @@ namespace INAIPI.CAJA.Forms
             MessageBox.Show($"Cuadre registrado en la bitácora de auditoría.\n\nResumen:\n{reporteAuditoria}",
                             "Cierre Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
+            TurnoCaja.TurnoAbierto = false;
             Application.Exit();
         }
     }

@@ -182,6 +182,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INAIPI - Módulo de Caja";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.Shown += new System.EventHandler(this.frmPrincipalCaja_Shown);
             this.pnlMenuLateral.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);

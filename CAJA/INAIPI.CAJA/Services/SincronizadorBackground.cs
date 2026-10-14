@@ -48,9 +48,10 @@ namespace INAIPI.CAJA.Services
 
                 // Para simular el estado de conexión si no hay pendientes, hacemos un ping rápido
                 // Como ConexionSNDClient es un mock, llamarlo con null nos dirá si "hay red"
+                // Si no hay pendientes, verificamos el pulso real con /api/telemetria/ping
                 if (pendientes.Count == 0)
                 {
-                    redActiva = _sndClient.EnviarTransaccion(new TransaccionCajaDTO());
+                    redActiva = _sndClient.VerificarConexionPing();
                 }
 
                 return redActiva;
