@@ -15,3 +15,12 @@ ClientConnectionId:f7780a79-981f-411b-b249-889e2fe5b59a
 Error Number:2627,State:1,Class:14
 2026-10-13 00:15:32,971 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'Admin' con rol 'Administrador'.
 2026-10-13 00:15:33,046 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión Administrativa completa iniciada: admin.
+2026-10-13 00:45:12,531 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'admin'.
+2026-10-13 00:45:19,895 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'admin' con rol 'Administrador'.
+2026-10-13 00:45:19,945 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión Administrativa completa iniciada: admin.
+2026-10-13 00:45:36,273 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'admin' con rol 'Administrador'.
+2026-10-13 00:45:36,349 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión Administrativa completa iniciada: admin.
+2026-10-13 18:27:08,038 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'admin' con rol 'Administrador'.
+2026-10-13 18:27:08,383 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión Administrativa completa iniciada: admin.
+2026-10-13 19:00:40,404 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'admin' con rol 'Administrador'.
+2026-10-13 19:00:40,550 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión Administrativa completa iniciada: admin.

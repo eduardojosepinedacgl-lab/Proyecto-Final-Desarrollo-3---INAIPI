@@ -1,0 +1,14 @@
+2026-10-13 18:52:48,910 [120] INFO  INAIPI.Core.Services.Controllers.AtencionesController - Atención procesada. GUID: e7b1a2c3-5d6e-4f8a-9b0c-1a2b3c4d5e6f - Mensaje: Atención registrada exitosamente en el CORE.
+2026-10-13 18:54:46,911 [120] INFO  INAIPI.Core.Services.Controllers.AtencionesController - Atención procesada. GUID: e7b1a2c3-5d6e-4f8a-9b0c-1a2b3c4d5e6f - Mensaje: Transacción idempotente: La operación ya había sido confirmada previamente.
+2026-10-13 18:54:51,540 [103] INFO  INAIPI.Core.Services.Controllers.AtencionesController - Atención procesada. GUID: e7b1a2c3-5d6e-4f8a-9b0c-1a2b3c4d5e6f - Mensaje: Transacción idempotente: La operación ya había sido confirmada previamente.
+2026-10-13 18:54:52,036 [110] INFO  INAIPI.Core.Services.Controllers.AtencionesController - Atención procesada. GUID: e7b1a2c3-5d6e-4f8a-9b0c-1a2b3c4d5e6f - Mensaje: Transacción idempotente: La operación ya había sido confirmada previamente.
+2026-10-13 18:55:05,940 [109] INFO  INAIPI.Core.Services.Controllers.AtencionesController - Atención procesada. GUID: e7b1a2c3-5d6e-4f8a-9b0c-1a2b3c4d5e6f - Mensaje: Transacción idempotente: La operación ya había sido confirmada previamente.
+2026-10-13 19:01:39,683 [6] WARN  INAIPI.Core.Services.Controllers.AtencionesController - Solicitud rechazada. GUID: 3fa85f64-5717-4562-b3fc-2c963f66afa6 - Detalle: BeneficiarioId inválido.
+2026-10-13 19:01:42,740 [9] WARN  INAIPI.Core.Services.Controllers.AtencionesController - Solicitud rechazada. GUID: 3fa85f64-5717-4562-b3fc-2c963f66afa6 - Detalle: BeneficiarioId inválido.
+2026-10-13 19:01:45,029 [13] WARN  INAIPI.Core.Services.Controllers.AtencionesController - Solicitud rechazada. GUID: 3fa85f64-5717-4562-b3fc-2c963f66afa6 - Detalle: BeneficiarioId inválido.
+2026-10-13 19:01:45,803 [18] WARN  INAIPI.Core.Services.Controllers.AtencionesController - Solicitud rechazada. GUID: 3fa85f64-5717-4562-b3fc-2c963f66afa6 - Detalle: BeneficiarioId inválido.
+2026-10-13 19:01:57,339 [10] WARN  INAIPI.Core.Services.Controllers.AtencionesController - Solicitud rechazada. GUID: 3fa85f64-5717-4562-b3fc-2c963f66afa6 - Detalle: BeneficiarioId inválido.
+2026-10-13 19:02:10,657 [18] WARN  INAIPI.Core.Services.Controllers.AtencionesController - Solicitud rechazada. GUID: 3fa85f64-5717-4562-b3fc-2c963f66afa6 - Detalle: BeneficiarioId inválido.
+2026-10-13 19:02:13,110 [9] WARN  INAIPI.Core.Services.Controllers.AtencionesController - Solicitud rechazada. GUID: 3fa85f64-5717-4562-b3fc-2c963f66afa6 - Detalle: BeneficiarioId inválido.
+2026-10-13 19:02:49,678 [9] WARN  INAIPI.Core.Services.Controllers.AtencionesController - Solicitud rechazada. GUID: 3fa85f64-5717-4562-b3fc-2c963f66afa6 - Detalle: BeneficiarioId inválido.
+2026-10-13 19:03:02,075 [15] WARN  INAIPI.Core.Services.Controllers.AtencionesController - Solicitud rechazada. GUID: 3fa85f64-5717-4562-b3fc-2c963f66afa6 - Detalle: BeneficiarioId inválido.
