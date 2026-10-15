@@ -1,0 +1,4 @@
+2026-10-13 12:47:24,837 [15] INFO  INAIPI.Core.Services.Controllers.AtencionesController - Atención procesada. GUID: bc6799f0-28ae-48e3-afc0-c629e9a692e9 - Mensaje: Atención registrada exitosamente en el CORE.
+2026-10-13 12:48:31,189 [10] INFO  INAIPI.Core.Services.Controllers.AtencionesController - Atención procesada. GUID: bc6799f0-28ae-48e3-afc0-c629e9a692e9 - Mensaje: Transacción idempotente: La operación ya había sido confirmada previamente.
+2026-10-13 12:50:30,755 [10] INFO  INAIPI.Core.Services.Controllers.AtencionesController - Atención procesada. GUID: bc6799f0-28ae-48e3-afc0-c629e9a692e9 - Mensaje: Transacción idempotente: La operación ya había sido confirmada previamente.
+2026-10-13 12:51:14,892 [10] INFO  INAIPI.Core.Services.Controllers.AtencionesController - Atención procesada. GUID: bc6799f0-28ae-48e3-afc0-c629e9a692e9 - Mensaje: Transacción idempotente: La operación ya había sido confirmada previamente.

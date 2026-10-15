@@ -4,11 +4,12 @@
     "Projects": [
       {
         "Path": "INAIPI.Core.Services\\INAIPI.Core.Services.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "IIS Express (Microsoft Edge)"
       },
       {
         "Path": "INAIPI.Core.AdminApp\\INAIPI.Core.AdminApp.csproj",
-        "Action": "Start"
+        "Action": "StartWithoutDebugging"
       }
     ]
   }
