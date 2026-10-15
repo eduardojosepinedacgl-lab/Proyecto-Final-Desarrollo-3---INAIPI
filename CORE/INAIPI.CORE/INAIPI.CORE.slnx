@@ -1,6 +1,5 @@
 <Solution>
   <Folder Name="/Database/">
-    <File Path="../../../../../Downloads/08_Web_Persistencia.sql" />
     <File Path="01_Tablas_Core.sql" />
     <File Path="02_StoredProcedures_Seguridad.sql" />
     <File Path="03_StoredProcedures_Operaciones.sql" />

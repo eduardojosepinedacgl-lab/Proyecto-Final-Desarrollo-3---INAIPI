@@ -163,7 +163,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Controllers\WebSyncController.cs" />
     <Compile Include="Data\AccesoDatos.cs" />
     <Compile Include="Data\CoreRepository.cs" />
     <Compile Include="Global.asax.cs">
