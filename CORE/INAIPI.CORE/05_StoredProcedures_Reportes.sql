@@ -1,18 +1,7 @@
-﻿-- =============================================================================
--- PROYECTO: INAIPI - MÓDULO CORE
--- ARCHIVO: 05_StoredProcedures_Reportes.sql
--- DESCRIPCIÓN: Procedimiento estructurado para abastecer el control ReportViewer
---              RDLC con filtrado dinámico por Centro y Rango de Fechas.
--- =============================================================================
-
-USE [INAIPI_Core];
+﻿USE [INAIPI_Core];
 GO
 
-IF OBJECT_ID(N'dbo.ppGetBeneficiariosPorCentro', N'P') IS NOT NULL
-    DROP PROCEDURE dbo.ppGetBeneficiariosPorCentro;
-GO
-
-CREATE PROCEDURE dbo.ppGetBeneficiariosPorCentro
+CREATE OR ALTER PROCEDURE dbo.ppGetBeneficiariosPorCentro
     @CentroId INT = NULL,
     @FechaInicio DATE = NULL,
     @FechaFin DATE = NULL
@@ -34,6 +23,8 @@ BEGIN
         c.TipoCentro,
         t.TutorId,
         t.DocumentoIdentidad AS DocumentoTutor,
+        t.Nombres AS NombresTutor,
+        t.Apellidos AS ApellidosTutor,
         (t.Nombres + N' ' + t.Apellidos) AS NombreCompletoTutor,
         t.Telefono AS TelefonoTutor,
         t.Direccion AS DireccionTutor,
@@ -45,6 +36,6 @@ BEGIN
       AND (@FechaInicio IS NULL OR CAST(b.FechaRegistro AS DATE) >= @FechaInicio)
       AND (@FechaFin IS NULL OR CAST(b.FechaRegistro AS DATE) <= @FechaFin)
       AND b.Estado = 1
-    ORDER BY c.NombreCentro ASC, b.Apellidos ASC, b.Nombres ASC;
+    ORDER BY b.BeneficiarioId ASC;
 END
 GO

@@ -7,47 +7,53 @@ namespace INAIPI.CAJA.Forms
 {
     public partial class frmReporteTicket : Form
     {
-        private string _guid, _beneficiario, _servicio, _importe, _fecha;
+        private readonly string _guid, _beneficiario, _servicio, _subtotal, _itbis, _total, _fecha;
+        private readonly string _cedula, _cajero;
 
-        // Constructor que recibe los datos exactos a imprimir
-        public frmReporteTicket(string guid, string beneficiario, string servicio, string importe, string fecha)
+        public frmReporteTicket(string guid, string beneficiario, string servicio,
+            string subtotal, string itbis, string total, string fecha,
+            string cedula = null, string cajero = null)
         {
             InitializeComponent();
             _guid = guid;
             _beneficiario = beneficiario;
             _servicio = servicio;
-            _importe = importe;
+            _subtotal = subtotal;
+            _itbis = itbis;
+            _total = total;
             _fecha = fecha;
+            _cedula = string.IsNullOrWhiteSpace(cedula) ? "N/D" : cedula;
+            _cajero = string.IsNullOrWhiteSpace(cajero) ? "N/D" : cajero;
         }
 
         private void frmReporteTicket_Load(object sender, EventArgs e)
         {
             try
             {
-                // Limpiar orígenes previos
                 reportViewer1.LocalReport.DataSources.Clear();
 
-                // Crear un DataTable temporal que coincida con tu dsCajaLocal
+                // Los nombres de columna deben coincidir con los campos de DataSetCajaLocal en el RDLC.
                 DataTable dt = new DataTable();
                 dt.Columns.Add("TransaccionGuid");
-                dt.Columns.Add("BeneficiarioId");
+                dt.Columns.Add("BeneficiarioId");   // trae "Nombre (Exp. N)"
                 dt.Columns.Add("DescripcionServicio");
+                dt.Columns.Add("Subtotal");
+                dt.Columns.Add("Itbis");
                 dt.Columns.Add("Importe");
                 dt.Columns.Add("Fecha");
+                dt.Columns.Add("Cedula");
+                dt.Columns.Add("Cajero");
 
-                // Inyectar la fila con la información recibida
-                dt.Rows.Add(_guid, _beneficiario, _servicio, _importe, _fecha);
+                dt.Rows.Add(_guid, _beneficiario, _servicio, _subtotal, _itbis,
+                            _total, _fecha, _cedula, _cajero);
 
-                // Vincular los datos al reporte (El nombre "DataSetCajaLocal" debe coincidir con el nombre que le diste al agregarlo en el RDLC)
-                ReportDataSource rds = new ReportDataSource("DataSetCajaLocal", dt);
-                reportViewer1.LocalReport.DataSources.Add(rds);
-
-                // Refrescar el visor para mostrar el ticket
+                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSetCajaLocal", dt));
                 reportViewer1.RefreshReport();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al generar el ticket: {ex.Message}", "Fallo de Impresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al generar el ticket: {ex.Message}", "Fallo de Impresión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

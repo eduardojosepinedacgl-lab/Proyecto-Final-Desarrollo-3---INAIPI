@@ -162,11 +162,13 @@ IF OBJECT_ID(N'dbo.tblAtenciones', N'U') IS NULL
 BEGIN
     CREATE TABLE dbo.tblAtenciones (
         AtencionId INT IDENTITY(1,1) NOT NULL,
-        TransaccionGuid UNIQUEIDENTIFIER NOT NULL,
+        TransaccionGuid UNIQUEIDENTIFIER NOT NULL CONSTRAINT DF_tblAtenciones_TransaccionGuid DEFAULT (NEWID()),
         BeneficiarioId INT NOT NULL,
         CentroId INT NOT NULL,
         Monto DECIMAL(18,2) NOT NULL CONSTRAINT DF_tblAtenciones_Monto DEFAULT (0.00),
         DescripcionServicio NVARCHAR(500) NOT NULL,
+        ServicioPrestado NVARCHAR(100) NULL,
+        UsuarioRegistroId INT NULL,
         FechaRegistro DATETIME NOT NULL CONSTRAINT DF_tblAtenciones_FechaRegistro DEFAULT (GETDATE()),
         CONSTRAINT PK_tblAtenciones PRIMARY KEY CLUSTERED (AtencionId ASC),
         CONSTRAINT UQ_tblAtenciones_Guid UNIQUE NONCLUSTERED (TransaccionGuid ASC),

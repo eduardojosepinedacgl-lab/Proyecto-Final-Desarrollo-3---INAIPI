@@ -35,6 +35,13 @@ namespace INAIPI.Core.Services.Models
             public string TelefonoTutor { get; set; }
             public string DireccionTutor { get; set; }
         }
+        public class BeneficiarioPadronDTO
+        {
+            public int BeneficiarioId { get; set; }
+            public string Nombres { get; set; }
+            public string Apellidos { get; set; }
+            public string CedulaTutor { get; set; }
+        }
 
         public class SolicitudAtencionDTO
         {

@@ -195,5 +195,35 @@ namespace INAIPI.Core.Services.Data
 
             return lista;
         }
+
+        public List<BeneficiarioPadronDTO> ObtenerPadronCaja()
+        {
+            List<BeneficiarioPadronDTO> lista = new List<BeneficiarioPadronDTO>();
+
+            const string query = @"
+        SELECT b.BeneficiarioId, b.Nombres, b.Apellidos,
+               REPLACE(t.DocumentoIdentidad, '-', '') AS CedulaTutor
+        FROM dbo.tblBeneficiarios b
+        INNER JOIN dbo.tblTutores t ON t.TutorId = b.TutorId
+        WHERE b.Estado = 1";
+
+            using (SqlConnection conexion = AccesoDatos.ObtenerConexion())
+            using (SqlCommand comando = new SqlCommand(query, conexion))
+            using (SqlDataReader lector = comando.ExecuteReader())
+            {
+                while (lector.Read())
+                {
+                    lista.Add(new BeneficiarioPadronDTO
+                    {
+                        BeneficiarioId = lector.GetInt32(lector.GetOrdinal("BeneficiarioId")),
+                        Nombres = lector.GetString(lector.GetOrdinal("Nombres")),
+                        Apellidos = lector.GetString(lector.GetOrdinal("Apellidos")),
+                        CedulaTutor = lector.GetString(lector.GetOrdinal("CedulaTutor"))
+                    });
+                }
+            }
+
+            return lista;
+        }
     }
 }

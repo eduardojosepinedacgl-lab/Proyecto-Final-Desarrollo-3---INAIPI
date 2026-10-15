@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using Newtonsoft.Json;
 
 namespace INAIPI.CAJA.Models
@@ -21,7 +22,21 @@ namespace INAIPI.CAJA.Models
             set => DescripcionServicio = value;
         }
 
+        /// <summary>
+        /// Precio base fijo del servicio sin impuestos.
+        /// </summary>
+        public decimal Subtotal { get; set; }
+
+        /// <summary>
+        /// Monto correspondiente al ITBIS fijo (18%).
+        /// </summary>
+        public decimal Itbis { get; set; }
+
+        /// <summary>
+        /// Total cobrado (Subtotal + Itbis). Mantiene el nombre Monto por compatibilidad con Integración y CORE.
+        /// </summary>
         public decimal Monto { get; set; }
+
         public DateTime FechaRegistro { get; set; }
         public string Observaciones { get; set; }
         public bool Sincronizado { get; set; }
@@ -41,7 +56,8 @@ namespace INAIPI.CAJA.Models
 
         public LoteSincronizacionCajaDTO()
         {
-            TerminalId = Environment.MachineName; // O "CAJA-01"
+            string terminalConfig = ConfigurationManager.AppSettings["TerminalId"];
+            TerminalId = !string.IsNullOrWhiteSpace(terminalConfig) ? terminalConfig : Environment.MachineName;
             Transacciones = new List<TransaccionCajaDTO>();
         }
     }

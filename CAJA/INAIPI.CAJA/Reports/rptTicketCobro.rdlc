@@ -29,12 +29,28 @@
 					<DataField>DescripcionServicio</DataField>
 					<rd:TypeName>System.String</rd:TypeName>
 				</Field>
+				<Field Name="Subtotal">
+					<DataField>Subtotal</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="Itbis">
+					<DataField>Itbis</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
 				<Field Name="Importe">
 					<DataField>Importe</DataField>
 					<rd:TypeName>System.String</rd:TypeName>
 				</Field>
 				<Field Name="Fecha">
 					<DataField>Fecha</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="Cedula">
+					<DataField>Cedula</DataField>
+					<rd:TypeName>System.String</rd:TypeName>
+				</Field>
+				<Field Name="Cajero">
+					<DataField>Cajero</DataField>
 					<rd:TypeName>System.String</rd:TypeName>
 				</Field>
 			</Fields>
@@ -51,8 +67,8 @@
 							<TextRun>
 								<Value>INAIPI - COMPROBANTE DE CAJA</Value>
 								<Style>
-									<FontFamily>Arial</FontFamily>
-									<FontSize>12pt</FontSize>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>11pt</FontSize>
 									<FontWeight>Bold</FontWeight>
 								</Style>
 							</TextRun>
@@ -66,6 +82,7 @@
 				<Left>0.1in</Left>
 				<Height>0.25in</Height>
 				<Width>2.8in</Width>
+				<Style />
 			</Textbox>
 			<Textbox Name="lblFecha">
 				<CanGrow>true</CanGrow>
@@ -76,16 +93,19 @@
 							<TextRun>
 								<Value>="Fecha: " &amp; First(Fields!Fecha.Value, "DataSetCajaLocal")</Value>
 								<Style>
-									<FontFamily>Arial</FontFamily>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>9pt</FontSize>
 								</Style>
 							</TextRun>
 						</TextRuns>
 					</Paragraph>
 				</Paragraphs>
-				<Top>0.5in</Top>
+				<Top>0.42in</Top>
 				<Left>0.1in</Left>
 				<Height>0.2in</Height>
 				<Width>2.8in</Width>
+				<ZIndex>1</ZIndex>
+				<Style />
 			</Textbox>
 			<Textbox Name="lblBeneficiario">
 				<CanGrow>true</CanGrow>
@@ -94,18 +114,21 @@
 					<Paragraph>
 						<TextRuns>
 							<TextRun>
-								<Value>="ID Beneficiario: " &amp; First(Fields!BeneficiarioId.Value, "DataSetCajaLocal")</Value>
+								<Value>="Beneficiario: " &amp; First(Fields!BeneficiarioId.Value, "DataSetCajaLocal")</Value>
 								<Style>
-									<FontFamily>Arial</FontFamily>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>9pt</FontSize>
 								</Style>
 							</TextRun>
 						</TextRuns>
 					</Paragraph>
 				</Paragraphs>
-				<Top>0.7in</Top>
+				<Top>0.86in</Top>
 				<Left>0.1in</Left>
-				<Height>0.2in</Height>
+				<Height>0.36in</Height>
 				<Width>2.8in</Width>
+				<ZIndex>2</ZIndex>
+				<Style />
 			</Textbox>
 			<Textbox Name="lblServicio">
 				<CanGrow>true</CanGrow>
@@ -116,16 +139,65 @@
 							<TextRun>
 								<Value>="Servicio: " &amp; First(Fields!DescripcionServicio.Value, "DataSetCajaLocal")</Value>
 								<Style>
-									<FontFamily>Arial</FontFamily>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>9pt</FontSize>
 								</Style>
 							</TextRun>
 						</TextRuns>
 					</Paragraph>
 				</Paragraphs>
-				<Top>0.9in</Top>
+				<Top>1.46in</Top>
 				<Left>0.1in</Left>
-				<Height>0.2in</Height>
+				<Height>0.36in</Height>
 				<Width>2.8in</Width>
+				<ZIndex>3</ZIndex>
+				<Style />
+			</Textbox>
+			<Textbox Name="lblSubtotal">
+				<CanGrow>true</CanGrow>
+				<KeepTogether>true</KeepTogether>
+				<Paragraphs>
+					<Paragraph>
+						<TextRuns>
+							<TextRun>
+								<Value>="Subtotal: RD$ " &amp; First(Fields!Subtotal.Value, "DataSetCajaLocal")</Value>
+								<Style>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>9pt</FontSize>
+								</Style>
+							</TextRun>
+						</TextRuns>
+					</Paragraph>
+				</Paragraphs>
+				<Top>1.88in</Top>
+				<Left>0.1in</Left>
+				<Height>0.19in</Height>
+				<Width>2.8in</Width>
+				<ZIndex>4</ZIndex>
+				<Style />
+			</Textbox>
+			<Textbox Name="lblItbis">
+				<CanGrow>true</CanGrow>
+				<KeepTogether>true</KeepTogether>
+				<Paragraphs>
+					<Paragraph>
+						<TextRuns>
+							<TextRun>
+								<Value>="ITBIS (18%): RD$ " &amp; First(Fields!Itbis.Value, "DataSetCajaLocal")</Value>
+								<Style>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>9pt</FontSize>
+								</Style>
+							</TextRun>
+						</TextRuns>
+					</Paragraph>
+				</Paragraphs>
+				<Top>2.08in</Top>
+				<Left>0.1in</Left>
+				<Height>0.19in</Height>
+				<Width>2.8in</Width>
+				<ZIndex>5</ZIndex>
+				<Style />
 			</Textbox>
 			<Textbox Name="lblImporte">
 				<CanGrow>true</CanGrow>
@@ -134,19 +206,22 @@
 					<Paragraph>
 						<TextRuns>
 							<TextRun>
-								<Value>="Importe: $" &amp; First(Fields!Importe.Value, "DataSetCajaLocal")</Value>
+								<Value>="Total Pagado: RD$ " &amp; First(Fields!Importe.Value, "DataSetCajaLocal")</Value>
 								<Style>
-									<FontFamily>Arial</FontFamily>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>10pt</FontSize>
 									<FontWeight>Bold</FontWeight>
 								</Style>
 							</TextRun>
 						</TextRuns>
 					</Paragraph>
 				</Paragraphs>
-				<Top>1.1in</Top>
+				<Top>2.29in</Top>
 				<Left>0.1in</Left>
-				<Height>0.2in</Height>
+				<Height>0.22in</Height>
 				<Width>2.8in</Width>
+				<ZIndex>6</ZIndex>
+				<Style />
 			</Textbox>
 			<Textbox Name="lblGuid">
 				<CanGrow>true</CanGrow>
@@ -157,29 +232,79 @@
 							<TextRun>
 								<Value>="Ref: " &amp; First(Fields!TransaccionGuid.Value, "DataSetCajaLocal")</Value>
 								<Style>
-									<FontFamily>Arial</FontFamily>
-									<FontSize>8pt</FontSize>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>7.5pt</FontSize>
 									<Color>DimGray</Color>
 								</Style>
 							</TextRun>
 						</TextRuns>
 					</Paragraph>
 				</Paragraphs>
-				<Top>1.4in</Top>
+				<Top>2.6in</Top>
 				<Left>0.1in</Left>
 				<Height>0.2in</Height>
 				<Width>2.8in</Width>
+				<ZIndex>7</ZIndex>
+				<Style />
+			</Textbox>
+			<Textbox Name="lblCajero">
+				<CanGrow>true</CanGrow>
+				<KeepTogether>true</KeepTogether>
+				<Paragraphs>
+					<Paragraph>
+						<TextRuns>
+							<TextRun>
+								<Value>="Cajero: " &amp; First(Fields!Cajero.Value, "DataSetCajaLocal")</Value>
+								<Style>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>9pt</FontSize>
+								</Style>
+							</TextRun>
+						</TextRuns>
+					</Paragraph>
+				</Paragraphs>
+				<Top>0.64in</Top>
+				<Left>0.1in</Left>
+				<Height>0.2in</Height>
+				<Width>2.8in</Width>
+				<ZIndex>8</ZIndex>
+				<Style />
+			</Textbox>
+			<Textbox Name="lblCedula">
+				<CanGrow>true</CanGrow>
+				<KeepTogether>true</KeepTogether>
+				<Paragraphs>
+					<Paragraph>
+						<TextRuns>
+							<TextRun>
+								<Value>="Cédula tutor: " &amp; First(Fields!Cedula.Value, "DataSetCajaLocal")</Value>
+								<Style>
+									<FontFamily>Segoe UI</FontFamily>
+									<FontSize>9pt</FontSize>
+								</Style>
+							</TextRun>
+						</TextRuns>
+					</Paragraph>
+				</Paragraphs>
+				<Top>1.24in</Top>
+				<Left>0.1in</Left>
+				<Height>0.2in</Height>
+				<Width>2.8in</Width>
+				<ZIndex>9</ZIndex>
+				<Style />
 			</Textbox>
 		</ReportItems>
-		<Height>1.8in</Height>
+		<Height>2.85in</Height>
+		<Style />
 	</Body>
 	<Width>3in</Width>
 	<Page>
-		<PageHeight>4in</PageHeight>
+		<PageHeight>4.2in</PageHeight>
 		<PageWidth>3.2in</PageWidth>
 		<LeftMargin>0.1in</LeftMargin>
 		<RightMargin>0.1in</RightMargin>
 		<TopMargin>0.1in</TopMargin>
 		<BottomMargin>0.1in</BottomMargin>
+		<Style />
 	</Page>
 </Report>

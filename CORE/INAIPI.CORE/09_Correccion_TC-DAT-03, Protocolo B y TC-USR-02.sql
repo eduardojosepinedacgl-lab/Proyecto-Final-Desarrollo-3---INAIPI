@@ -1,54 +1,54 @@
-﻿USE [INAIPI_Core];
-GO
------------------(CORRECCION A ERROR EN ORIGINAL)
--- 1. Eliminar la restricción previa si existe en el catálogo
-IF EXISTS (SELECT 1 FROM sys.default_constraints WHERE name = 'DF_tblBeneficiarios_Version')
-BEGIN
-    -- Si la columna ya existe y tiene la restricción atada, se desacopla
-    DECLARE @TablaPadre NVARCHAR(256) = (
-        SELECT OBJECT_NAME(parent_object_id) 
-        FROM sys.default_constraints 
-        WHERE name = 'DF_tblBeneficiarios_Version'
-    );
-    EXEC('ALTER TABLE dbo.' + @TablaPadre + ' DROP CONSTRAINT DF_tblBeneficiarios_Version;');
-END
+﻿-- =============================================================================
+-- PROYECTO: INAIPI - MÓDULO CORE
+-- ARCHIVO: 09_Correccion_TC-DAT-03, Protocolo B y TC-USR-02.sql
+-- DESCRIPCIÓN: Consolidación idempotente de la columna única Version en
+--              tblBeneficiarios, columnas de auditoría en tblAtenciones y
+--              unicidad de Username en tblUsuarios.
+-- =============================================================================
+
+USE [INAIPI_Core];
 GO
 
--- 2. Asegurar la columna VersionRegistro
-IF NOT EXISTS (
+-- 1. Unificar Version y eliminar la columna duplicada VersionRegistro si fue creada antes
+IF EXISTS (
     SELECT 1 FROM sys.columns 
-    WHERE object_id = OBJECT_ID('dbo.tblBeneficiarios') AND name = 'VersionRegistro'
+    WHERE object_id = OBJECT_ID(N'dbo.tblBeneficiarios') AND name = N'VersionRegistro'
 )
 BEGIN
-    ALTER TABLE dbo.tblBeneficiarios 
-    ADD VersionRegistro INT NOT NULL CONSTRAINT DF_tblBeneficiarios_Version DEFAULT 1;
+    -- Sincronizar el número de versión más alto hacia la columna oficial Version
+    EXEC(N'UPDATE dbo.tblBeneficiarios SET Version = CASE WHEN VersionRegistro > Version THEN VersionRegistro ELSE Version END;');
+
+    -- Eliminar cualquier constraint default atado a VersionRegistro antes de borrar la columna
+    DECLARE @ConstraintVR NVARCHAR(256);
+    SELECT @ConstraintVR = dc.name
+    FROM sys.default_constraints dc
+    INNER JOIN sys.columns c ON dc.parent_object_id = c.object_id AND dc.parent_column_id = c.column_id
+    WHERE dc.parent_object_id = OBJECT_ID(N'dbo.tblBeneficiarios') AND c.name = N'VersionRegistro';
+
+    IF @ConstraintVR IS NOT NULL
+        EXEC(N'ALTER TABLE dbo.tblBeneficiarios DROP CONSTRAINT [' + @ConstraintVR + N'];');
+
+    ALTER TABLE dbo.tblBeneficiarios DROP COLUMN VersionRegistro;
 END
 GO
 
--- 3. Verificación de existencia
-SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE 
-FROM INFORMATION_SCHEMA.COLUMNS 
-WHERE TABLE_NAME = 'tblBeneficiarios' AND COLUMN_NAME = 'VersionRegistro';
-GO
-
-
-
--------------------------(ORIGINAL)
--- 1. Protocolo B: Agregar VersionRegistro en tblBeneficiarios si no existe
+-- 2. Garantizar que la columna oficial Version tenga su restricción DEFAULT (1)
 IF NOT EXISTS (
-    SELECT 1 FROM sys.columns 
-    WHERE object_id = OBJECT_ID('dbo.tblBeneficiarios') AND name = 'VersionRegistro'
+    SELECT 1
+    FROM sys.default_constraints dc
+    INNER JOIN sys.columns c ON dc.parent_object_id = c.object_id AND dc.parent_column_id = c.column_id
+    WHERE dc.parent_object_id = OBJECT_ID(N'dbo.tblBeneficiarios') AND c.name = N'Version'
 )
 BEGIN
-    ALTER TABLE dbo.tblBeneficiarios 
-    ADD VersionRegistro INT NOT NULL CONSTRAINT DF_tblBeneficiarios_Version DEFAULT 1;
+    ALTER TABLE dbo.tblBeneficiarios
+    ADD CONSTRAINT DF_tblBeneficiarios_Version DEFAULT (1) FOR Version;
 END
 GO
 
--- 2. TC-DAT-03: Agregar columnas faltantes en tblAtenciones
+-- 3. TC-DAT-03: Agregar columnas faltantes en tblAtenciones
 IF NOT EXISTS (
     SELECT 1 FROM sys.columns 
-    WHERE object_id = OBJECT_ID('dbo.tblAtenciones') AND name = 'ServicioPrestado'
+    WHERE object_id = OBJECT_ID(N'dbo.tblAtenciones') AND name = N'ServicioPrestado'
 )
 BEGIN
     ALTER TABLE dbo.tblAtenciones ADD ServicioPrestado NVARCHAR(100) NULL;
@@ -57,15 +57,27 @@ GO
 
 IF NOT EXISTS (
     SELECT 1 FROM sys.columns 
-    WHERE object_id = OBJECT_ID('dbo.tblAtenciones') AND name = 'UsuarioRegistroId'
+    WHERE object_id = OBJECT_ID(N'dbo.tblAtenciones') AND name = N'UsuarioRegistroId'
 )
 BEGIN
     ALTER TABLE dbo.tblAtenciones ADD UsuarioRegistroId INT NULL;
 END
 GO
 
--- 3. TC-USR-02: Garantizar restricción UNIQUE en Username para evitar duplicados
--- Eliminar duplicados si existieran antes de aplicar la restricción
+-- 4. Agregar restricción DEFAULT a TransaccionGuid en tblAtenciones
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.default_constraints dc
+    INNER JOIN sys.columns c ON dc.parent_object_id = c.object_id AND dc.parent_column_id = c.column_id
+    WHERE dc.parent_object_id = OBJECT_ID(N'dbo.tblAtenciones') AND c.name = N'TransaccionGuid'
+)
+BEGIN
+    ALTER TABLE dbo.tblAtenciones 
+    ADD CONSTRAINT DF_tblAtenciones_TransaccionGuid DEFAULT (NEWID()) FOR TransaccionGuid;
+END
+GO
+
+-- 5. TC-USR-02: Garantizar restricción UNIQUE en Username para evitar duplicados
 WITH UsuariosDuplicados AS (
     SELECT UsuarioId, ROW_NUMBER() OVER(PARTITION BY Username ORDER BY UsuarioId) AS Fila
     FROM dbo.tblUsuarios
@@ -75,64 +87,10 @@ GO
 
 IF NOT EXISTS (
     SELECT 1 FROM sys.indexes 
-    WHERE name = 'UQ_tblUsuarios_Username' AND object_id = OBJECT_ID('dbo.tblUsuarios')
+    WHERE name = N'UQ_tblUsuarios_Username' AND object_id = OBJECT_ID(N'dbo.tblUsuarios')
 )
 BEGIN
     ALTER TABLE dbo.tblUsuarios 
     ADD CONSTRAINT UQ_tblUsuarios_Username UNIQUE (Username);
 END
 GO
-
----------------------------- Coreccion Concurrencia Optimista no Detectada
-USE [INAIPI_Core];
-GO
-
-CREATE OR ALTER PROCEDURE dbo.ppActualizarBeneficiario
-    @BeneficiarioId INT,
-    @Nombres NVARCHAR(100),
-    @Apellidos NVARCHAR(100),
-    @FechaNacimiento DATE,
-    @CentroId INT,
-    @VersionOriginal INT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    BEGIN TRANSACTION;
-    BEGIN TRY
-        UPDATE dbo.tblBeneficiarios
-        SET Nombres = @Nombres,
-            Apellidos = @Apellidos,
-            FechaNacimiento = @FechaNacimiento,
-            CentroId = @CentroId,
-            VersionRegistro = VersionRegistro + 1
-        WHERE BeneficiarioId = @BeneficiarioId 
-          AND VersionRegistro = @VersionOriginal;
-
-        IF @@ROWCOUNT = 0
-        BEGIN
-            RAISERROR('Error de concurrencia: el registro fue modificado por otro proceso o usuario.', 16, 1);
-        END
-
-        COMMIT TRANSACTION;
-    END TRY
-    BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        THROW;
-    END CATCH;
-END;
-GO
-------------------------------------------
-USE [INAIPI_Core];
-GO
-
--- 1. Agregar restricción DEFAULT a TransaccionGuid
-IF NOT EXISTS (
-    SELECT 1 FROM sys.default_constraints 
-    WHERE name = 'DF_tblAtenciones_TransaccionGuid'
-)
-BEGIN
-    ALTER TABLE dbo.tblAtenciones 
-    ADD CONSTRAINT DF_tblAtenciones_TransaccionGuid DEFAULT NEWID() FOR TransaccionGuid;
-END
-GO
-

@@ -3,6 +3,8 @@ using INAIPI.Core.Services.Models;
 using log4net;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,6 +20,50 @@ namespace INAIPI.Core.Services.Controllers
         private static readonly ILog Log = LogManager.GetLogger(typeof(AtencionesController));
         private readonly CoreRepository _repositorio = new CoreRepository();
 
+        [HttpGet]
+        [Route("catalogo")]
+        public HttpResponseMessage ObtenerCatalogoPrecios()
+        {
+            try
+            {
+                var catalogo = new List<object>();
+                using (SqlConnection conn = AccesoDatos.ObtenerConexion())
+                using (SqlCommand cmd = new SqlCommand(
+                    "SELECT ComponenteId, Codigo, NombreComponente, DivisionResponsable, PrecioFijo FROM dbo.tblComponentesAtencion ORDER BY ComponenteId ASC", conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            decimal precioFijo = Convert.ToDecimal(reader["PrecioFijo"]);
+                            decimal itbis = Math.Round(precioFijo * 0.18m, 2, MidpointRounding.AwayFromZero);
+                            catalogo.Add(new
+                            {
+                                ComponenteId = Convert.ToInt32(reader["ComponenteId"]),
+                                Codigo = Convert.ToString(reader["Codigo"]),
+                                Nombre = Convert.ToString(reader["NombreComponente"]),
+                                DivisionResponsable = Convert.ToString(reader["DivisionResponsable"]),
+                                PrecioFijo = precioFijo,
+                                Itbis = itbis,
+                                Total = precioFijo + itbis
+                            });
+                        }
+                    }
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, catalogo);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Error al consultar el catálogo de precios fijos.", ex);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new RespuestaServicio
+                {
+                    Codigo = 500,
+                    Mensaje = "No se pudo recuperar el catálogo de servicios.",
+                    DetalleTecnico = ex.Message
+                });
+            }
+        }
+
         [HttpPost]
         [Route("")]
         public HttpResponseMessage RegistrarAtencion([FromBody] SolicitudAtencionDTO solicitud)
@@ -29,6 +75,16 @@ namespace INAIPI.Core.Services.Controllers
                     Codigo = 400,
                     Mensaje = "TransaccionGuid requerido para asegurar idempotencia.",
                     DetalleTecnico = "El objeto SolicitudAtencionDTO es inválido o no posee GUID."
+                });
+            }
+
+            if (solicitud.BeneficiarioId <= 0 || solicitud.CentroId <= 0 || solicitud.Monto <= 0 || string.IsNullOrWhiteSpace(solicitud.DescripcionServicio))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new RespuestaServicio
+                {
+                    Codigo = 400,
+                    Mensaje = "Datos de atención incompletos o monto inválido.",
+                    DetalleTecnico = "BeneficiarioId, CentroId, Monto (>0) y DescripcionServicio son requeridos."
                 });
             }
 
@@ -44,7 +100,7 @@ namespace INAIPI.Core.Services.Controllers
 
                 if (respuesta.Codigo == 400)
                 {
-                    Log.WarnFormat("Solicitud rechazada. GUID: {0} - Detalle: {1}", solicitud.TransaccionGuid, respuesta.DetalleTecnico);
+                    Log.WarnFormat("Solicitud rechazada por validación de negocio/precio fijo. GUID: {0} - Detalle: {1}", solicitud.TransaccionGuid, respuesta.DetalleTecnico);
                     return Request.CreateResponse(HttpStatusCode.BadRequest, respuesta);
                 }
 

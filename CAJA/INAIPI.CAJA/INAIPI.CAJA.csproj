@@ -97,6 +97,12 @@
     <Compile Include="Forms\frmInicioCaja.Designer.cs">
       <DependentUpon>frmInicioCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmLoginCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLoginCaja.Designer.cs">
+      <DependentUpon>frmLoginCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmPrincipalCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,7 +116,11 @@
       <DependentUpon>frmReporteTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CajaLogger.cs" />
+    <Compile Include="Helpers\ReglasNegocio.cs" />
+    <Compile Include="Models\BeneficiarioPadronDTO.cs" />
+    <Compile Include="Models\CajeroDescargaDTO.cs" />
     <Compile Include="Models\OutboxItem.cs" />
+    <Compile Include="Models\ServicioCatalogoDTO.cs" />
     <Compile Include="Models\TransaccionCajaDTO.cs" />
     <Compile Include="Models\TurnoCaja.cs" />
     <Compile Include="Program.cs" />
@@ -126,6 +136,9 @@
     <Compile Include="Services\ConexionSNDClient.cs" />
     <Compile Include="Services\SincronizadorBackground.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Forms\frmCobroServicio.resx">
+      <DependentUpon>frmCobroServicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmHistorialTransacciones.resx">
       <DependentUpon>frmHistorialTransacciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +183,10 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="DatabaseLocal\01_CrearEsquemaLocal.sql" />
+    <Content Include="DatabaseLocal\02_CatalogosLocales.sql" />
+    <Content Include="DatabaseLocal\03_CatalogoServicios.sql" />
+    <Content Include="DatabaseLocal\04_AuditoriaColumnas.sql" />
+    <Content Include="DatabaseLocal\99_ReiniciarDatos.sql" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
