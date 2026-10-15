@@ -1,0 +1,34 @@
+# Visual Studio y compilación .NET
+.vs/
+bin/
+obj/
+packages/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de configuración con secretos locales
+.env
+secrets.config
+*.secrets.config
+
+# Logs de ejecución (Log4Net y consolas)
+Logs/
+logs/
+*.log
+
+# Bases de datos locales SQLite (Módulo WEB) y LocalDB
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.mdf
+*.ldf
+
+# Dependencias Node.js (Módulo WEB)
+node_modules/
+npm-debug.log*
+
+# Reportes generados en tiempo de ejecución
+Reportes/Cierres/*.pdf
+Reporte_*.html
