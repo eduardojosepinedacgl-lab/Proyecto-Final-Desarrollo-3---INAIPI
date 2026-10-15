@@ -1,0 +1,38 @@
+2026-10-12 23:16:15,502 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'admin'.
+2026-10-12 23:16:16,713 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'admin'.
+2026-10-12 23:16:37,691 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'cajero' con rol 'Cajero'.
+2026-10-12 23:16:47,575 [1] WARN  INAIPI.Core.AdminApp.Forms.frmPrincipal - Usuario 'cajero' con rol 'Cajero' intentó ingresar a AdminApp.
+2026-10-12 23:17:14,029 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'auditor' con rol 'Auditor'.
+2026-10-12 23:17:14,087 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión de Auditor iniciada: auditor. Menús de edición bloqueados.
+2026-10-12 23:17:54,625 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'coordinador' con rol 'Coordinador'.
+2026-10-12 23:17:54,697 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión de Coordinador iniciada: coordinador.
+2026-10-12 23:18:32,759 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'admin' con rol 'Administrador'.
+2026-10-12 23:18:32,846 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión Administrativa completa iniciada: admin.
+2026-10-12 23:20:10,700 [1] ERROR INAIPI.Core.AdminApp.Forms.frmUsuariosRoles - Error al cargar centros.
+System.Data.NoNullAllowedException: La columna 'CentroId' no permite tener valores nulls.
+   en System.Data.DataColumn.CheckNullable(DataRow row)
+   en System.Data.DataTable.RaiseRowChanging(DataRowChangeEventArgs args, DataRow eRow, DataRowAction eAction, Boolean fireEvent)
+   en System.Data.DataTable.SetNewRecordWorker(DataRow row, Int32 proposedRecord, DataRowAction action, Boolean isInMerge, Boolean suppressEnsurePropertyChanged, Int32 position, Boolean fireEvent, Exception& deferredException)
+   en System.Data.DataTable.InsertRow(DataRow row, Int64 proposedID, Int32 pos, Boolean fireEvent)
+   en System.Data.DataRowCollection.InsertAt(DataRow row, Int32 pos)
+   en INAIPI.Core.AdminApp.Forms.frmUsuariosRoles.CargarCentros() en C:\Users\xxcel\Documents\GitHub\Proyecto-Final-Desarrollo-3---INAIPI\CORE\INAIPI.CORE\INAIPI.Core.AdminApp\Forms\frmUsuariosRoles.cs:línea 72
+2026-10-12 23:23:18,853 [1] INFO  INAIPI.Core.AdminApp.Forms.frmUsuariosRoles - Usuario ID 2 ('coordinador') actualizado.
+2026-10-12 23:25:23,047 [1] INFO  INAIPI.Core.AdminApp.Forms.frmUsuariosRoles - Usuario ID 3 ('auditor') actualizado.
+2026-10-12 23:40:52,668 [1] INFO  INAIPI.Core.AdminApp.Forms.frmReporteViewer - Reporte RDLC generado con 1 registros.
+2026-10-12 23:40:53,448 [1] INFO  INAIPI.Core.AdminApp.Forms.frmReporteViewer - Reporte RDLC generado con 1 registros.
+2026-10-12 23:40:59,167 [1] INFO  INAIPI.Core.AdminApp.Forms.frmReporteViewer - Reporte RDLC generado con 1 registros.
+2026-10-12 23:41:45,377 [1] INFO  INAIPI.Core.AdminApp.Forms.frmReporteViewer - Reporte RDLC generado con 1 registros.
+2026-10-12 23:41:47,142 [1] INFO  INAIPI.Core.AdminApp.Forms.frmReporteViewer - Reporte RDLC generado con 1 registros.
+2026-10-12 23:41:47,823 [1] INFO  INAIPI.Core.AdminApp.Forms.frmReporteViewer - Reporte RDLC generado con 1 registros.
+2026-10-12 23:42:05,685 [1] INFO  INAIPI.Core.AdminApp.Forms.frmReporteViewer - Reporte RDLC generado con 0 registros.
+2026-10-12 23:50:09,136 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'admin' con rol 'Administrador'.
+2026-10-12 23:50:09,216 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión Administrativa completa iniciada: admin.
+2026-10-12 23:50:21,564 [1] INFO  INAIPI.Core.AdminApp.Forms.frmUsuariosRoles - Estado alternado para UsuarioId 4.
+2026-10-12 23:50:29,370 [1] INFO  INAIPI.Core.AdminApp.Forms.frmUsuariosRoles - Estado alternado para UsuarioId 3.
+2026-10-12 23:50:30,307 [1] INFO  INAIPI.Core.AdminApp.Forms.frmUsuariosRoles - Usuario ID 4 ('cajero') actualizado.
+2026-10-12 23:51:11,458 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'auditor'.
+2026-10-12 23:52:06,069 [1] WARN  INAIPI.Core.AdminApp.Forms.frmLogin - Fallo de autenticación para el usuario 'admin'.
+2026-10-12 23:52:13,162 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'admin' con rol 'Administrador'.
+2026-10-12 23:52:13,222 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión Administrativa completa iniciada: admin.
+2026-10-12 23:59:40,241 [1] INFO  INAIPI.Core.AdminApp.Forms.frmLogin - Acceso autorizado para el usuario 'admin' con rol 'Administrador'.
+2026-10-12 23:59:40,315 [1] INFO  INAIPI.Core.AdminApp.Forms.frmPrincipal - Sesión Administrativa completa iniciada: admin.

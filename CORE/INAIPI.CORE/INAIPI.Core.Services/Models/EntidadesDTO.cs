@@ -39,11 +39,18 @@ namespace INAIPI.Core.Services.Models
         public class SolicitudAtencionDTO
         {
             public Guid TransaccionGuid { get; set; }
+
             public int BeneficiarioId { get; set; }
             public int CentroId { get; set; }
+            public int? ComponenteId { get; set; }
+            public int UsuarioRegistroId { get; set; }
             public decimal Monto { get; set; }
             public string DescripcionServicio { get; set; }
-            public DateTime FechaRegistro { get; set; }
+            public string ServicioPrestado { get; set; }
+            public string Observaciones { get; set; }
+
+            // Auditoría temporal
+            public DateTime FechaRegistro { get; set; } = DateTime.Now;
         }
 
         public class LoginRequestDTO
