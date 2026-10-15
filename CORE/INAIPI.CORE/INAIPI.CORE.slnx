@@ -8,7 +8,11 @@
     <File Path="06_Usuario_Admin.sql" />
     <File Path="07_Correccion_Algorito_Hash.sql" />
     <File Path="08_NuevoRolesYModalidades.sql" />
+    <File Path="08_Web_Persistencia.sql" />
     <File Path="09_Correccion_TC-DAT-03, Protocolo B y TC-USR-02.sql" />
+    <File Path="10-2_Correccion_Actualizar_Beneficiario.sql" />
+    <File Path="10_Correccion_Actualizar_Beneficiario.sql" />
+    <File Path="11_Arreglo_Actualizacion_Beneficiarios.sql" />
   </Folder>
   <Project Path="INAIPI.Core.AdminApp/INAIPI.Core.AdminApp.csproj" Id="03f7fe51-6f68-44c2-9696-875f1182b1ba" />
   <Project Path="INAIPI.Core.Services/INAIPI.Core.Services.csproj" Id="14bfd72b-d86f-47fb-990a-938a3bc8b8d8" />

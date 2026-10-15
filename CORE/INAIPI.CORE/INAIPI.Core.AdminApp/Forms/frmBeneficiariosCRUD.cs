@@ -173,6 +173,12 @@ namespace INAIPI.Core.AdminApp.Forms
                     comando.Parameters.Add(new SqlParameter("@FotografiaUrl", SqlDbType.NVarChar, 500) { Value = DBNull.Value }); 
                     comando.Parameters.Add(new SqlParameter("@VersionOriginal", SqlDbType.Int) { Value = versionOriginal });
 
+                    comando.Parameters.Add(new SqlParameter("@DocumentoTutor", SqlDbType.NVarChar, 20) { Value = txtDocumentoTutor.Text.Trim() });
+                    comando.Parameters.Add(new SqlParameter("@NombresTutor", SqlDbType.NVarChar, 100) { Value = txtNombresTutor.Text.Trim() });
+                    comando.Parameters.Add(new SqlParameter("@ApellidosTutor", SqlDbType.NVarChar, 100) { Value = txtApellidosTutor.Text.Trim() });
+                    comando.Parameters.Add(new SqlParameter("@TelefonoTutor", SqlDbType.NVarChar, 20) { Value = txtTelefonoTutor.Text.Trim() });
+                    comando.Parameters.Add(new SqlParameter("@DireccionTutor", SqlDbType.NVarChar, 250) { Value = txtDireccionTutor.Text.Trim() });
+
                     conexion.Open();
                     using (SqlDataReader lector = comando.ExecuteReader(CommandBehavior.SingleRow))
                     {
