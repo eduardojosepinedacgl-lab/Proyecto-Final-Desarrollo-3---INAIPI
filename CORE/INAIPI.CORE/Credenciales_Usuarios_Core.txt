@@ -1,0 +1,25 @@
+Las credenciales sembradas para los distintos roles y usuarios del sistema CORE son:
+
+* **Administrador:**
+* Usuario: `admin`
+* Contraseña: `AdminSeguro2026*`
+
+
+* **Coordinador:**
+* Usuario: `coordinador`
+
+* Contraseña: `CoordSeguro2026*`
+
+
+
+* **Auditor:**
+* Usuario: `auditor`
+
+* Contraseña: `AuditorSeguro2026*`
+
+
+
+* **Cajero:**
+* Usuario: `cajero`
+
+* Contraseña: `CajeroSeguro2026*`
